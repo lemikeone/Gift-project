@@ -1,4 +1,5 @@
 <?php
+include("session.php");
 $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root');
 $reponse = $bdd->query('SELECT * FROM usersfriends');
 
@@ -22,4 +23,7 @@ while ($donnees = $reponse->fetch())
    </p><?php
    }
 
+include("connexion.php");
+
+include("logout.php");
 ?>
