@@ -22,12 +22,13 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 		<option value="Soeur">Soeur</option>
 		<option value="Frère">Frère</option>
 		<option value="Famille">Famille</option>
-		<option value="Ami">Ami</option>
-		<option value="Travail">Travail</option>
 		<option value="Conjoint">Conjoint</option>
 		<option value="Conjointe">Conjointe</option>
 		<option value="Femme">Femme</option>
 		<option value="Mari">Mari</option>
+		<option value="Ami">Ami</option>
+		<option value="Travail">Travail</option>
+		<option value="Travail">Autre</option>
 	</select>
         <button type="submit">Ok</button>
     </form>
