@@ -9,11 +9,6 @@ session_destroy();
 setcookie('login', '');
 setcookie('pass_hache', '');
 
-if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
-{
-    echo 'Bonjour ' . $_SESSION['pseudo'];
-}
-
-else {echo 'je ne te connais Plus';}
+header('Location: index.php');
 
 ?>

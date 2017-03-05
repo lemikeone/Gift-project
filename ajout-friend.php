@@ -1,6 +1,8 @@
 <?php  
 session_start();
 
+include("menu.php");
+
 $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root');
 
 $nom = $_GET['nom'];
