@@ -29,9 +29,8 @@ while ($donnees = $reponse->fetch())
 {
 
 ?>
-    <p>
     <?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?> : Son anniversaire est le <?php echo get_next_birthday($donnees['datedenaissance']); ?>
-   </p><?php
+   <br><?php
    }
  }
 
