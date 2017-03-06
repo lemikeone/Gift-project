@@ -1,10 +1,19 @@
+<?php include("sessionstart.php"); ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Le Petit Cadeau</title>
+	<?php include("styles.php"); ?>
+</head>
+<body>
+<br/>
+<?php include("header.php"); ?>
 <?php
-
 // Session
 include("session.php");
 include("menu.php");
 
-$bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root');
+$bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root' );
 
 // If connected
 if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
@@ -21,7 +30,7 @@ function get_next_birthday($birthday) {
     return $date->format('Y-m-d');
 }
 
-$reponse = $bdd->prepare('SELECT * FROM usersfriends  WHERE iduser = ?');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? ORDER BY datedenaissance');
 $reponse->execute(array($_SESSION['id']));
 
 // On affiche chaque entrée une à une
@@ -29,10 +38,14 @@ while ($donnees = $reponse->fetch())
 {
 
 ?>
-    <?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?> (<?php echo $donnees['link']; ?>) : Son anniversaire est le <?php echo get_next_birthday($donnees['datedenaissance']); ?>
+    <?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?> (<?php echo $donnees['link']; ?>) : Son anniversaire est le <?php echo get_next_birthday($donnees['datedenaissance']); ?> et date de naissance : <?php echo $donnees['datedenaissance']; ?>
    <br><?php
    }
  }
 
 include("connexion.php");
+include("footer.php");
 ?>
+
+</body>
+</html>

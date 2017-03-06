@@ -1,5 +1,15 @@
+<?php include("sessionstart.php"); ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Le Petit Cadeau</title>
+	<?php include("styles.php"); ?>
+</head>
+<body>
+<br/>
+<?php include("header.php"); ?>
 <?php
-
+// Session
 include("session.php");
 include("menu.php");
 ?>
@@ -22,4 +32,10 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
     <?php 
     }
 
-    ?>
+
+include("connexion.php");
+include("footer.php");
+?>
+
+</body>
+</html>
