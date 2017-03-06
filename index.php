@@ -7,11 +7,15 @@
 </head>
 <body>
 <br/>
-<?php include("header.php"); ?>
-<?php
+<?php 
+include("menu.php");
+include("header.php"); 
+
 // Session
 include("session.php");
-include("menu.php");
+
+?>
+<?php
 
 $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root' );
 
@@ -42,8 +46,7 @@ while ($donnees = $reponse->fetch())
    <br><?php
    }
  }
-
-include("connexion.php");
+?><br/><br/><?php
 include("footer.php");
 ?>
 

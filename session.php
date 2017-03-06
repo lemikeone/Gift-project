@@ -3,9 +3,13 @@
 
 if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 {
-    echo 'Bonjour ' . $_SESSION['pseudo'] ;
+    echo '<h1>Bonjour ' . $_SESSION['pseudo'] .'</h1>';
 }
 
-else {echo 'Veuillez vous connecter ou créer un compte';}
+else {
+
+include("messagehome.php");
+
+}
 
 ?>
