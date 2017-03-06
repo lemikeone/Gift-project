@@ -34,7 +34,18 @@ function get_next_birthday($birthday) {
     return $date->format('Y-m-d');
 }
 
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? ORDER BY datedenaissance');
+function age($date)
+{
+  $dna = strtotime($date);
+  $now = time();
+   
+  $age = date('Y',$now)-date('Y',$dna);
+  if(strcmp(date('md', $dna),date('md', $now))>0) $age--;
+ 
+  return $age;
+}
+
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
 $reponse->execute(array($_SESSION['id']));
 
 // On affiche chaque entrée une à une
@@ -42,7 +53,7 @@ while ($donnees = $reponse->fetch())
 {
 
 ?>
-    <?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?> (<?php echo $donnees['link']; ?>) : Son anniversaire est le <?php echo get_next_birthday($donnees['datedenaissance']); ?> et date de naissance : <?php echo $donnees['datedenaissance']; ?>
+    <?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?> (<?php echo $donnees['link']; ?>) : Son anniversaire est le <?php echo get_next_birthday($donnees['datedenaissance']); ?> (<?php echo age($donnees['datedenaissance']); ?> ans)
    <br><?php
    }
  }

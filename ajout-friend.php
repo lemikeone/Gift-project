@@ -1,5 +1,17 @@
-<?php  
-session_start();
+<?php include("sessionstart.php"); ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Le Petit Cadeau</title>
+	<?php include("styles.php"); ?>
+</head>
+<body>
+<br/>
+<?php include("menu.php"); ?>
+<?php include("header.php"); ?>
+
+
+<?php
 
 include("menu.php");
 
@@ -22,4 +34,8 @@ $req->execute(array(
 
 echo 'Proche a été ajouté';
 
+include("footer.php");
 ?>
+
+</body>
+</html>

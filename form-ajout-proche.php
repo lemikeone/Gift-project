@@ -26,6 +26,7 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
     <div class="form-group">
     <input class="form-control" type="text" name="birthdate" placeholder="Date de naissance">
 </div>
+
     <div class="form-group">
     <select class="form-control" name="link">
 		<option value="Mère">Mère</option>
