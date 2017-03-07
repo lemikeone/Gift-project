@@ -7,8 +7,6 @@
 </head>
 <body>
 
-<br/>
-
 <?php 
 include("menu.php");
 include("header.php"); 
@@ -21,19 +19,23 @@ $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 
 
       $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? ORDER BY nom');
       $reponse->execute(array($_SESSION['id']));
-
+?> <h1>Mes proches</h1><div class="row"><?php
       // On affiche chaque entrée une à une
       while ($donnees = $reponse->fetch())
         {
 
         ?>
-        <?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?> <a href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-        <br><?php
+        <div class="col-md-3 text-center listeproches">
+        <div class="case">
+        <?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?> <br><br><a class="btn btn-default btn-sm" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier</i></a></div></div>
+        <?php
         }
+        ?></div><?php
     }
 
 ?>
 <br/><br/>
+
 <?php include("footer.php"); ?>
 
 </body>

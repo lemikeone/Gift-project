@@ -59,7 +59,7 @@ $donnees = $reponse->fetch();
       <br>
       <form method="POST" action="delete-proche.php">
       <input type="hidden" name="idproche" value="<?php echo "$idproche"; ?>">
-       <button class="btn btn-danger" type="submit">Supprimer</button>
+       <button class="btn btn-danger" onclick="return confirm('Etes vous sûr ? Le contact ne pourra pas être récupéré.')" type="submit">Supprimer</button>
 </form>
 <br/><br/>
 <?php include("footer.php"); ?>

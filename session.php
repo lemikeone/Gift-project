@@ -2,12 +2,12 @@
 
 if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 	{
-	    echo '<h1>Bonjour ' . $_SESSION['pseudo'] .'</h1>';
+	    echo 'Bonjour ' . $_SESSION['pseudo'] .'';
 	}
 
 else 
 	{
-	include("messagehome.php");
+	
 	}
 
 ?>

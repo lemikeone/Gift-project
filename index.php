@@ -7,14 +7,11 @@
 </head>
 <body>
 
-<br/>
-
 <?php 
 include("menu.php");
 include("header.php"); 
 
 // Bonjour pseudo
-include("session.php");
 
 $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root' );
 
@@ -33,6 +30,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 
         return $date->format('Y-m-d');
         }
 
+    // Calculate age of contact
     function age($date)
         {
         $dna = strtotime($date);
@@ -44,6 +42,9 @@ $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 
         return $age;
         }
 
+
+    setlocale(LC_TIME, 'fr_FR');
+
       $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id']));
 
@@ -51,9 +52,16 @@ $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 
       while ($donnees = $reponse->fetch())
         {
 
-        ?>
-        <?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?> (<?php echo $donnees['link']; ?>) : Son anniversaire est le <?php echo get_next_birthday($donnees['datedenaissance']); ?> (<?php echo age($donnees['datedenaissance']); ?> ans)
-        <br><?php
+        $nextbirthday = get_next_birthday($donnees['datedenaissance']);
+        $duree = floor((strtotime($nextbirthday) - time()));?>
+        <div class="flux">
+        <h2><?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?></h2>
+        <p><i class="fa fa-birthday-cake" aria-hidden="true"></i> Anniversaire : <?php echo age($donnees['datedenaissance']); ?> ans le <?php echo strftime("%A %e %B %Y", strtotime($nextbirthday)); ?></p>
+        <?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i>
+ Dans ', floor((strtotime($nextbirthday) - time())/86400); echo " jours</p>"; ?> 
+        </div>
+
+        <?php
         }
     }
 

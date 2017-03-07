@@ -6,8 +6,6 @@
 	<?php include("styles.php"); ?>
 </head>
 <body>
-
-<br/>
 <?php include("menu.php"); ?>
 <?php include("header.php"); ?>
 

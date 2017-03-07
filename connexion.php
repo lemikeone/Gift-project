@@ -4,7 +4,7 @@
 	if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 		{  
 		?>
-	 	<a class="btn btn-default" href="logoutpage.php">Logout</a>
+	 	<a class="btn btn-default" href="logoutpage.php">Se déconnecter</a>
 		<?php
 	    }
     
