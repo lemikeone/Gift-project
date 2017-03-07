@@ -17,23 +17,16 @@
 $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root');
 
 // Recuperation des données de proche
-$nom = $_POST['nom'];
-$prenom = $_POST['prenom'];
-$birthdate = $_POST['birthdate'];
-$link = $_POST['link'];
+$idproche = $_POST['idproche'];
 
 // Ecriture du proche
-$req = $bdd->prepare('INSERT INTO usersfriends(nom, prenom, datedenaissance, iduser, link) VALUES(:nom, :prenom, :datedenaissance, :iduser, :link)');
+$req = $bdd->prepare('DELETE FROM usersfriends WHERE id = :id ');
 $req->execute(array(
-	'nom' => $nom,
-	'prenom' => $prenom,
-	'datedenaissance' => $birthdate,
-	'iduser' => $_SESSION['id'],
-	'link' => $link,
+	'id' => $idproche,
 
 	));
 
-echo 'Proche a été ajouté';
+echo 'Proche a été Supprimé';
 
 include("footer.php");
 ?>

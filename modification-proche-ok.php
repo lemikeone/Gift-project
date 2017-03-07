@@ -21,19 +21,20 @@ $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
 $birthdate = $_POST['birthdate'];
 $link = $_POST['link'];
+$idproche = $_POST['idproche'];
 
 // Ecriture du proche
-$req = $bdd->prepare('INSERT INTO usersfriends(nom, prenom, datedenaissance, iduser, link) VALUES(:nom, :prenom, :datedenaissance, :iduser, :link)');
+$req = $bdd->prepare('UPDATE usersfriends SET nom = IF(:nom = "", nom, :nom), prenom = IF(:prenom = "", prenom, :prenom), datedenaissance = IF(:datedenaissance = "", datedenaissance, :datedenaissance), link = IF(:link = "", link, :link) WHERE id = :id ');
 $req->execute(array(
 	'nom' => $nom,
 	'prenom' => $prenom,
 	'datedenaissance' => $birthdate,
-	'iduser' => $_SESSION['id'],
 	'link' => $link,
+	'id' => $idproche,
 
 	));
 
-echo 'Proche a été ajouté';
+echo 'Proche a été mis à jour';
 
 include("footer.php");
 ?>

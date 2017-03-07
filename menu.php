@@ -5,21 +5,28 @@
 
 <?php
 
-if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
-{
-	?>
-	<li><a href="form-ajout-proche.php">Ajouter un proche</a></li>
-	<?php
-}
+	if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
+		{
+			?>
+			<li><a href="form-ajout-proche.php">Ajouter un proche</a></li>
+			<li><a href="liste-proches.php">Proche</a></li>
+			<?php
+		}
 
-else {?>
-<li><a href="create-account.php">Créer un compte</a></li>
-<li><a href="pageconnexion.php">Connexion</a></li>
-<?php
-}
+	else 
+		{
+			?>
+			<li><a href="create-account.php">Créer un compte</a></li>
+			<li><a href="pageconnexion.php">Connexion</a></li>
+			<?php
+		}
 ?>
- </ul>
- <div class="navbar-form navbar-right"><?php
+</ul>
+<div class="navbar-form navbar-right"><?php
+
 include("connexion.php");
-?></div>
+
+?>
+
+</div>
 </nav>
