@@ -52,7 +52,7 @@ $duree = floor((strtotime($nextbirthday) - time()));
 Date de naissance : <?php echo $donnees['datedenaissance']; ?><br>
 Lien : <?php echo $donnees['link'] ?>
 <br><br>
-<p><i class="fa fa-birthday-cake" aria-hidden="true"></i> Anniversaire : <?php echo age($donnees['datedenaissance']); ?> ans le <?php echo strftime("%A %e %B %Y", strtotime($nextbirthday)); ?></p>
+<p><i class="fa fa-birthday-cake" aria-hidden="true"></i> Anniversaire : <?php echo (age($donnees['datedenaissance'])+1); ?> ans le <?php echo strftime("%A %e %B %Y", strtotime($nextbirthday)); ?></p>
         <?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i>
  Dans ', floor((strtotime($nextbirthday) - time())/86400); echo " jours</p>"; ?> 
 <br><br><a class="btn btn-default" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier</i></a><br><br>
