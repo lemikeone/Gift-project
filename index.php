@@ -9,8 +9,9 @@
 
 <?php 
 include("menu.php");
-include("header.php"); 
-
+?>
+<div class="container containerflux">
+<?php
 // Ouverture de la BDD
 $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root' );
 
