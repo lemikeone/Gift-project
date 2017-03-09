@@ -1,7 +1,6 @@
-<br/>
-<nav class="navbar navbar-default navbar-fixed-top">
-<ul class="nav navbar-nav">
-<li><a href="index.php"><img src="logo2.png" height="30px"></a></li>
+<nav class="nnav-wrapper white">
+<a href="index.php" class="brand-logo center"><img src="logo2.png" height="70px"></a>
+<ul id="nav-mobile menu" class="right hide-on-med-and-down">
 
 <?php
 if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
@@ -21,13 +20,5 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 		}?>
 
 </ul>
-<div class="navbar-form navbar-right">
 
-<?php
-include("session.php");
-include("connexion.php");
-
-?>
-
-</div>
 </nav>

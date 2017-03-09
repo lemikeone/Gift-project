@@ -9,6 +9,12 @@
 <?php include("menu.php"); ?>
 <?php include("header.php"); ?>
 
+<script type="text/javascript">
+	 $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+
 <?php
 
 if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
@@ -16,18 +22,19 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 		?>
 		<h1>Ajouter un proche</h1>
 	    <form method="POST" action="ajout-friend.php">
-	    <div class="form-group">
+	    <div class="row">
+	    <div class="form-group col s3">
 	    	<input class="form-control" type="text" name="prenom" placeholder="Prenom">
 		</div>
-	    <div class="form-group">
+	    <div class="form-group col s3">
 	    	<input class="form-control" type="text" name="nom" placeholder="Nom">
 	    </div>
-	    <div class="form-group">
+	    <div class="form-group col s3">
 	    	<input class="form-control" type="date" name="birthdate" placeholder="Date de naissance">
 		</div>
-
-	    <div class="form-group">
-	    <select class="form-control" name="link">
+	    <div class="selecttype input-field form-group col s3">
+	    <select>
+	    	<option value="" disabled selected>Relation</option>
 			<option value="Mère">Mère</option>
 			<option value="Père">Père</option>
 			<option value="Fille">Fille</option>
@@ -46,7 +53,8 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 			<option value="Autre">Autre</option>
 		</select>
 		</div>
-	        <button class="btn btn-default" type="submit">Ajouter</button>
+		</div>
+	        <button class="btn btnmain white" type="submit">Ajouter</button>
 	    </form>
 	    <?php
     }

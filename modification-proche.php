@@ -7,6 +7,12 @@
 </head>
 <body>
 
+<script type="text/javascript">
+   $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+
 <?php 
 include("menu.php");
 include("header.php"); 
@@ -23,17 +29,18 @@ $donnees = $reponse->fetch();
 <p>Ne renseignez que les champs que vous souhaitez modifier</p>
 
 <form method="POST" action="modification-proche-ok.php">
-      <div class="form-group">
+<div class="row">
+      <div class="form-group col s3">
         <input class="form-control" type="text" name="prenom" placeholder="<?php echo $donnees['prenom']; ?>">
     </div>
-    <div class="form-group">
+    <div class="form-group col s3">
         <input class="form-control" type="text" name="nom" placeholder="<?php echo $donnees['nom']; ?>">
       </div>
-      <div class="form-group">
+      <div class="form-group col s3">
         <input class="form-control" type="date" name="birthdate" placeholder="<?php echo $donnees['datedenaissance']; ?>">
     </div>
 
-      <div class="form-group">
+      <div class="form-group col s3">
       <select class="form-control" name="link">
       <option value="Mère" <?php if ($donnees['link'] == 'Mère') {echo ('selected="selected"');}?> >Mère</option>
       <option value="Père" <?php if ($donnees['link'] == 'Père') {echo ('selected="selected"');}?> >Père</option>
@@ -53,13 +60,14 @@ $donnees = $reponse->fetch();
       <option value="Autre" <?php if ($donnees['link'] == 'Autre') {echo ('selected="selected"');}?> >Autre</option>
     </select>
     </div>
+    </div>
     <input type="hidden" name="idproche" value="<?php echo "$idproche"; ?>">
-          <button class="btn btn-default" type="submit">Modifier</button>
+          <button class="btn btnmain white" type="submit">Modifier</button>
       </form>
       <br>
       <form method="POST" action="delete-proche.php">
       <input type="hidden" name="idproche" value="<?php echo "$idproche"; ?>">
-       <button class="btn btn-danger" onclick="return confirm('Etes vous sûr ? Le contact ne pourra pas être récupéré.')" type="submit">Supprimer</button>
+       <button class="btn red" onclick="return confirm('Etes vous sûr ? Le contact ne pourra pas être récupéré.')" type="submit">Supprimer le proche</button>
 </form>
 <br/><br/>
 <?php include("footer.php"); ?>

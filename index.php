@@ -45,6 +45,9 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 
     setlocale(LC_TIME, 'fr_FR');
 
+
+include("fetedesmeres.php");
+
 // On sort les anniversaires avant le 14/02 ET après la date en cours
 $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) <= "02-14" AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id']));
@@ -55,14 +58,32 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR
         include("feed-proches.php");
         }
 
-// On affiche Saint-Valetin si on est avant le 14 Février de l'année en cours 
+// On affiche Saint-Valentin si on est avant le 14 Février de l'année en cours 
 if (date('m-d', time()) <= "02-14") {
     include("feed-saint-valentin.php");
     }
 
-// On sort les anniversaires après le 14/02 avant le 24/12 ET après la date en cours
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) > "02-24" AND SUBSTR(`datedenaissance`,6) <= "12-24" AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
-      $reponse->execute(array($_SESSION['id']));
+// On sort les anniversaires après le 14/02 avant la fête des meres ET après la date en cours
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) > "02-14" AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+      $reponse->execute(array($_SESSION['id'], substr($feteDesMeres, -5)));
+
+      // On affiche chaque entrée une à une
+      while ($donnees = $reponse->fetch())
+        {
+        include("feed-proches.php");
+        }
+
+// On affiche fête des mères si on est avant le 14 Février de l'année en cours 
+if (date('m-d', time()) <= $feteDesMeres) {
+    ?><div class="flux">
+<h2>Fête des mères</h2>
+<p><i class="fa fa-female" aria-hidden="true"></i> <?php echo $feteDesMeres; ?></p>
+</div><?php
+    }
+
+// On sort les anniversaires après la fête des meres avant le 24/12 ET après la date en cours
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) > ? AND SUBSTR(`datedenaissance`,6) <= "12-24" AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+      $reponse->execute(array($_SESSION['id'], substr($feteDesMeres, -5)));
 
       // On affiche chaque entrée une à une
       while ($donnees = $reponse->fetch())
@@ -85,7 +106,7 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR
         include("feed-proches.php"); 
         }
 
-// On sort les anniversaires avant la date en cours (donc de l'année suivant) et avant la Saint Valentin
+// On sort les anniversaires avant la date en cours (donc de l'année suivante) et avant la Saint Valentin
 $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) AND SUBSTR(`datedenaissance`,6) <= "02-14" ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id']));
 
@@ -95,14 +116,33 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR
         include("feed-proches.php");
         }
 
-// On affiche Noël si on est après le 24 décembre de l'année en cours 
+// On affiche on affiche la saint valentin si on est déjà après la saint valentin de l'année en cours 
 if (date('m-d', time()) > "02-14") {
 include("feed-saint-valentin.php");
 }
 
-        // On sort les anniversaires avant la date en cours (donc de l'année suivant) et avant Noël et après la saint valentin
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) AND SUBSTR(`datedenaissance`,6) <= "12-24" AND SUBSTR(`datedenaissance`,6) > "02-14" ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
-      $reponse->execute(array($_SESSION['id']));
+
+// On sort les anniversaires après le 14/02 avant la fête des meres ET avant la date en cours
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) > "02-14" AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+      $reponse->execute(array($_SESSION['id'], substr($feteDesMeres2, -5)));
+
+      // On affiche chaque entrée une à une
+      while ($donnees = $reponse->fetch())
+        {
+        include("feed-proches.php");
+        }
+
+// On affiche fête des mères si on est après la date de la fête des mères de l'année suivante
+if (date('m-d', time()) > $feteDesMeres2) {
+    ?><div class="flux">
+<h2>Fête des mères</h2>
+<p><i class="fa fa-female" aria-hidden="true"></i> <?php echo $feteDesMeres; ?></p>
+</div><?php
+    }
+
+        // On sort les anniversaires avant la date en cours (donc de l'année suivant) et avant Noël et après la fête des mères
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) AND SUBSTR(`datedenaissance`,6) <= "12-24" AND SUBSTR(`datedenaissance`,6) > ? ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+      $reponse->execute(array($_SESSION['id'], substr($feteDesMeres2, -5)));
 
       // On affiche chaque entrée une à une
       while ($donnees = $reponse->fetch())
