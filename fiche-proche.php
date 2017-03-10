@@ -62,28 +62,39 @@ $duree = floor((strtotime($nextbirthday) - time()));
 
 ?>
 <h1><?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?></h1>
+
+<a class="btn btnmain white" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier</i></a>
+<br><br>
 Date de naissance : <?php echo $donnees['datedenaissance']; ?><br>
 Lien : <?php echo $donnees['link'] ?>
 <br><br>
-<p><i class="fa fa-birthday-cake" aria-hidden="true"></i> Anniversaire : <?php echo (age($donnees['datedenaissance'])+1); ?> ans le <?php echo strftime("%A %e %B %Y", strtotime($nextbirthday)); ?></p>
+<p><i class="fa fa-birthday-cake" aria-hidden="true"></i> Anniversaire : <?php 
+    if ($donnees['anneenaissance'] != '0000-00-00') {
+      # code...
+    
+    $datecomplete = substr($donnees['anneenaissance'], 0, 4).substr($donnees['datedenaissance'], 4);
+         echo (age($datecomplete)+1); ?> ans <?php
+}
+
+        ?> le <?php echo strftime("%A %e %B %Y", strtotime($nextbirthday)); ?></p>
         <?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i>
  Dans ', floor((strtotime($nextbirthday) - time())/86400); echo " jours</p>"; ?> 
-<br><br><a class="btn btnmain white" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier</i></a><br><br>
-<form method="POST" action="delete-proche.php">
-      <input type="hidden" name="idproche" value="<?php echo "$idproche"; ?>">
-       <button class="btn red" onclick="return confirm('Etes vous sûr ? Le contact ne pourra pas être récupéré.')" type="submit">Supprimer le proche</button>
-</form>
-<br/><br/>
+<h2>Ajouter une idée cadeau</h2>
 
 <form method="POST" action="ajout-cadeau.php">
-<input class="form-control" type="text" name="url" placeholder="URL">
+<div class="row">
+<div class="form-group col s9">
+<input class="form-control" type="text" name="url" placeholder="Entrez l'URL de la page du cadeau...">
+</div>
 <input type="hidden" name="idproche" value="<?php echo "$idproche"; ?>">
-<button class="btn btnmain white" type="submit">Ajouter</button>
+<div class="form-group col s3">
+<button class="btn btnmain white button100" type="submit">Ajouter</button>
+</div>
 </form>
 <br>
 
 <?php
-$reponse = $bdd->prepare('SELECT * FROM usersgifts WHERE procheid = ?');
+$reponse = $bdd->prepare('SELECT * FROM usersgifts WHERE procheid = ? ORDER BY ID DESC');
 $reponse->execute(array($idproche));
 ?>
 <div class="row nomargin">
@@ -93,7 +104,9 @@ while ($donnees = $reponse->fetch())
   ?>
   <div class="col s4 nomargin">
   <div class="card cardsgiftsprofile">
+
 <a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></center></i></a>
+<center><a href="suppressioncadeau.php?idgift=<?php echo $donnees['ID']; ?>">Supprimer</a></center>
 </div>
 </div>
 <?php

@@ -7,7 +7,7 @@
      * 
      */
      // int
-     function getFirstDayOfMonth2($dayName, $month, $year, $skipNTimes=0) {
+     function getFirstDayOfMonth3($dayName, $month, $year, $skipNTimes=0) {
         $firstDayOfMonthTime = mktime(1, 0, 0, $month, 1, $year);
         $retTimestamp = $firstDayOfMonthTime;
         $dayIsCorrect = $dayName == date('w', $firstDayOfMonthTime);
@@ -27,16 +27,15 @@
     }
 
     // date mysql
-   function getFeteDesPeres($annee) {
-        return date("Y-m-d", getFirstDayOfMonth2(0, 06, $annee, 2));
+   function getFeteDesGrandsMeres($annee) {
+        return date("Y-m-d", getFirstDayOfMonth3(0, 03, $annee, 0));
     }
 
 
 $i = date("Y");
-$feteDesPeres = getFeteDesPeres($i);
-    
+$FeteDesGrandsMeres = getFeteDesGrandsMeres($i);    
 
 $i2 = date("Y")+1;
-$feteDesPeres2 = getFeteDesPeres($i2);
+$FeteDesGrandsMeres2 = getFeteDesGrandsMeres($i2);
 
 ?>

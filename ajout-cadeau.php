@@ -7,7 +7,8 @@ $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 
 $url = $_POST['url'];
 $idproche = $_POST['idproche'];
 
-// Ecriture du proche
+if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
+    // Ecriture du proche
 $req = $bdd->prepare('INSERT INTO usersgifts(procheid, url) VALUES(:procheid, :url)');
 $req->execute(array(
 	'procheid' => $idproche,
@@ -15,4 +16,10 @@ $req->execute(array(
 	));
 
 header('Location: ' . $_SERVER['HTTP_REFERER']);
+} 
+
+else {
+    echo("$url n'est pas une adresse web valide");
+}
+
 ?>

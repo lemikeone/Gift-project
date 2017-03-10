@@ -30,10 +30,12 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 	    	<input class="form-control" type="text" name="nom" placeholder="Nom">
 	    </div>
 	    <div class="form-group col s3">
-	    	<input class="form-control" type="date" name="birthdate" placeholder="Date de naissance">
+	    	<input class="form-control" type="text" name="jour" placeholder="Jour">
+	    	<input class="form-control" type="text" name="mois" placeholder="Mois">
+	    	<input class="form-control" type="text" name="annee" placeholder="Annee">
 		</div>
 	    <div class="selecttype input-field form-group col s3">
-	    <select>
+	    <select name="link">
 	    	<option value="" disabled selected>Relation</option>
 			<option value="Mère">Mère</option>
 			<option value="Père">Père</option>

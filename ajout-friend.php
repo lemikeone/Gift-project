@@ -19,15 +19,17 @@ $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 
 // Recuperation des données de proche
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
-$birthdate = $_POST['birthdate'];
+$birthdate = "004-".$_POST['mois']."-".$_POST['jour'];
 $link = $_POST['link'];
+$birthyear = $_POST['annee']."-01-01";
 
 // Ecriture du proche
-$req = $bdd->prepare('INSERT INTO usersfriends(nom, prenom, datedenaissance, iduser, link) VALUES(:nom, :prenom, :datedenaissance, :iduser, :link)');
+$req = $bdd->prepare('INSERT INTO usersfriends(nom, prenom, datedenaissance, anneenaissance, iduser, link) VALUES(:nom, :prenom, :datedenaissance, :anneenaissance, :iduser, :link)');
 $req->execute(array(
 	'nom' => $nom,
 	'prenom' => $prenom,
 	'datedenaissance' => $birthdate,
+	'anneenaissance' => $birthyear,
 	'iduser' => $_SESSION['id'],
 	'link' => $link,
 
