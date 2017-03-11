@@ -65,7 +65,8 @@ $duree = floor((strtotime($nextbirthday) - time()));
 
 <a class="btn btnmain white" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier</i></a>
 <br><br>
-Date de naissance : <?php echo $donnees['datedenaissance']; ?><br>
+Date de naissance : <?php 
+echo strftime("%e %B", strtotime($donnees['datedenaissance']));?><br>
 Lien : <?php echo $donnees['link'] ?>
 <br><br>
 <p><i class="fa fa-birthday-cake" aria-hidden="true"></i> Anniversaire : <?php 

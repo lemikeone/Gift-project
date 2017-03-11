@@ -37,7 +37,15 @@ $donnees = $reponse->fetch();
         <input class="form-control" type="text" name="nom" placeholder="<?php echo $donnees['nom']; ?>">
       </div>
       <div class="form-group col s3">
-        <input class="form-control" type="date" name="birthdate" placeholder="<?php echo $donnees['datedenaissance']; ?>">
+        <input class="form-control" type="text" name="jour" placeholder="Jour : <?php echo substr($donnees['datedenaissance'], 8, 2); ?>">
+        <input class="form-control" type="text" name="mois" placeholder="Mois : <?php echo substr($donnees['datedenaissance'], 5, 2); ?>">
+        <input class="form-control" type="text" name="annee" placeholder="Année : <?php 
+        if ($donnees['anneenaissance'] != "0000-00-00") {
+          echo substr($donnees['anneenaissance'], 0, 4); 
+        }
+        
+
+        ?>">
     </div>
 
       <div class="form-group col s3">
