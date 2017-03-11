@@ -32,7 +32,7 @@ include("fetedesperes.php");
 include("fetedesgrandsmeres.php");
 
 // On sort les anniversaires avant le 14/02 ET après la date en cours
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) <= "02-14" AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) <= "02-14" AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id']));
 
       // On affiche chaque entrée une à une
@@ -47,7 +47,7 @@ if (date('m-d', time()) <= "02-14") {
     }
 
 // On sort les anniversaires après le 14/02 avant la fête des grandmeres ET après la date en cours
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) > "02-14" AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) > "02-14" AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id'], substr($FeteDesGrandsMeres, -5)));
 
       // On affiche chaque entrée une à une
@@ -65,7 +65,7 @@ if (date('m-d', time()) <= substr($FeteDesGrandsMeres, -5)) {
     }
 
 // On sort les anniversaires après la fete des grandsmeres avant la fête des meres ET après la date en cours
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) > ? AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) > ? AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id'], substr($FeteDesGrandsMeres, -5), substr($feteDesMeres, -5)));
 
       // On affiche chaque entrée une à une
@@ -83,7 +83,7 @@ if (date('m-d', time()) <= substr($feteDesMeres, -5)) {
     }
 
 // On sort les anniversaires après la fête des meres avant la fête des pères ET après la date en cours
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) > ? AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) > ? AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id'], substr($feteDesMeres, -5), substr($feteDesPeres, -5)));
 
       // On affiche chaque entrée une à une
@@ -101,7 +101,7 @@ if (date('m-d', time()) <= substr($feteDesPeres, -5)) {
     }
 
 // On sort les anniversaires après la fête des pères avant le 24/12 ET après la date en cours
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) > ? AND SUBSTR(`datedenaissance`,6) <= "12-24" AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) > ? AND SUBSTR(`datedenaissance`,6) <= "12-24" AND SUBSTR(`datedenaissance`,6) > SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id'], substr($feteDesPeres, -5)));
 
       // On affiche chaque entrée une à une
@@ -116,7 +116,7 @@ if (date('m-d', time()) <= "12-24") {
     }
 
 // On sort les anniversaires après Noël dans l'année en cours
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) > "12-24" ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) > "12-24" ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id']));
 
       // On affiche chaque entrée une à une
@@ -126,7 +126,7 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR
         }
 
 // On sort les anniversaires avant la date en cours (donc de l'année suivante) et avant la Saint Valentin
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) AND SUBSTR(`datedenaissance`,6) <= "02-14" ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) AND SUBSTR(`datedenaissance`,6) <= "02-14" ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id']));
 
       // On affiche chaque entrée une à une
@@ -141,7 +141,7 @@ include("feed-saint-valentin.php");
 }
 
 // On sort les anniversaires après le 14/02 avant la fête des grandsmeres ET avant la date en cours
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) > "02-14" AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) > "02-14" AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id'], substr($FeteDesGrandsMeres2, -5)));
 
       // On affiche chaque entrée une à une
@@ -159,7 +159,7 @@ if (date('m-d', time()) > substr($FeteDesGrandsMeres2, -5)) {
     }
 
 // On sort les anniversaires après la fête des grands meres avant la fête des meres ET avant la date en cours
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) > ? AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) > ? AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id'], substr($FeteDesGrandsMeres2, -5), substr($feteDesMeres2, -5)));
 
       // On affiche chaque entrée une à une
@@ -177,7 +177,7 @@ if (date('m-d', time()) > substr($feteDesMeres2, -5)) {
     }
 
     // On sort les anniversaires après la fête des mères avant la fête des pères ET avant la date en cours
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) > ? AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) > ? AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id'], substr($feteDesMeres2, -5), substr($feteDesPeres2, -5)));
 
       // On affiche chaque entrée une à une
@@ -197,7 +197,7 @@ if (date('m-d', time()) > substr($feteDesPeres2, -5)) {
 
 
         // On sort les anniversaires avant la date en cours (donc de l'année suivant) et avant Noël et après la fête des Pères
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) AND SUBSTR(`datedenaissance`,6) <= "12-24" AND SUBSTR(`datedenaissance`,6) > ? ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) AND SUBSTR(`datedenaissance`,6) <= "12-24" AND SUBSTR(`datedenaissance`,6) > ? ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id'], substr($feteDesPeres2, -5)));
 
       // On affiche chaque entrée une à une
@@ -212,7 +212,7 @@ include("feed-noel.php");
 }
 
 // On sort les anniversaires avant la date en cours et apres Noël
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) AND SUBSTR(`datedenaissance`,6) > "12-24" ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) AND SUBSTR(`datedenaissance`,6) > "12-24" ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id']));
 
       // On affiche chaque entrée une à une

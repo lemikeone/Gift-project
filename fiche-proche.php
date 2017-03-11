@@ -57,18 +57,30 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE id = ?');
 $reponse->execute(array($idproche));
 $donnees = $reponse->fetch();
 
+if (isset($_SESSION['id'])) {
+  # code...
+
+if ($donnees['iduser'] == $_SESSION['id']) {
+
 $nextbirthday = get_next_birthday($donnees['datedenaissance']);
 $duree = floor((strtotime($nextbirthday) - time()));
 
 ?>
-<h1><?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?></h1>
+<h1><?php echo htmlspecialchars($donnees['prenom']); ?> <?php echo htmlspecialchars($donnees['nom']); ?></h1>
 
 <a class="btn btnmain white" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier</i></a>
 <br><br>
-Date de naissance : <?php 
-echo strftime("%e %B", strtotime($donnees['datedenaissance']));?><br>
-Lien : <?php echo $donnees['link'] ?>
+Date de naissance : 
+
+<?php 
+if ($donnees['datedenaissance'] != 0000-00-00) {
+echo strftime("%e %B", strtotime($donnees['datedenaissance'])); }
+else {echo "Date non renseignée";}
+?>
+<br>
+Lien : <?php echo htmlspecialchars($donnees['link']) ?>
 <br><br>
+<?php if ($donnees['datedenaissance'] != 0000-00-00) { ?>
 <p><i class="fa fa-birthday-cake" aria-hidden="true"></i> Anniversaire : <?php 
     if ($donnees['anneenaissance'] != '0000-00-00') {
       # code...
@@ -76,10 +88,10 @@ Lien : <?php echo $donnees['link'] ?>
     $datecomplete = substr($donnees['anneenaissance'], 0, 4).substr($donnees['datedenaissance'], 4);
          echo (age($datecomplete)+1); ?> ans <?php
 }
-
         ?> le <?php echo strftime("%A %e %B %Y", strtotime($nextbirthday)); ?></p>
         <?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i>
- Dans ', floor((strtotime($nextbirthday) - time())/86400); echo " jours</p>"; ?> 
+ Dans ', floor((strtotime($nextbirthday) - time())/86400); echo " jours</p>"; }
+ ?> 
 <h2>Ajouter une idée cadeau</h2>
 
 <form method="POST" action="ajout-cadeau.php">
@@ -115,8 +127,17 @@ while ($donnees = $reponse->fetch())
         }
 ?>
 </div>
-<br>
+<?php 
+}
 
+else {echo "Ce proche ne fait pas partie de votre liste de proches";}
+
+}
+
+else {echo "Vous devez être connecté pour afficher la fiche d'un proche";}
+
+ ?>
+<br>
 
 <?php include("footer.php"); ?>
 

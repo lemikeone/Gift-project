@@ -1,17 +1,4 @@
 <?php include("sessionstart.php"); ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Le Petit Cadeau</title>
-	<?php include("styles.php"); ?>
-</head>
-
-<body>
-<br/>
-
-<?php include("menu.php"); ?>
-<?php include("header.php"); ?>
-
 <?php
 
 $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root');
@@ -19,7 +6,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 
 // Recuperation des données de proche
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
-$birthdate = "004-".$_POST['mois']."-".$_POST['jour'];
+$birthdate = "0004-".$_POST['mois']."-".$_POST['jour'];
 $link = $_POST['link'];
 $birthyear = $_POST['annee']."-01-01";
 
@@ -32,13 +19,8 @@ $req->execute(array(
 	'anneenaissance' => $birthyear,
 	'iduser' => $_SESSION['id'],
 	'link' => $link,
-
 	));
 
-echo 'Proche a été ajouté';
+header('Location: liste-proches.php');
 
-include("footer.php");
 ?>
-
-</body>
-</html>

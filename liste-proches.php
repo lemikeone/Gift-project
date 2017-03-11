@@ -28,7 +28,7 @@ $bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 
         
         <div class="col s4 nomargincol">
         <div class="case">
-        <a href="fiche-proche.php?idproche=<?php echo $donnees['ID'] ?>"><?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?></a><br><br><a class="btn btnmain white" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier</i></a></div></div>
+        <a href="fiche-proche.php?idproche=<?php echo $donnees['ID'] ?>"><?php echo htmlspecialchars($donnees['prenom']); ?> <?php echo htmlspecialchars($donnees['nom']); ?></a><br><br><a class="btn btnmain white" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier</i></a></div></div>
         <?php
         }
         ?></div><?php

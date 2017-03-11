@@ -23,20 +23,15 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 		<h1>Ajouter un proche</h1>
 	    <form method="POST" action="ajout-friend.php">
 	    <div class="row">
-	    <div class="form-group col s3">
+	    <div class="form-group col s4">
 	    	<input class="form-control" type="text" name="prenom" placeholder="Prenom">
 		</div>
-	    <div class="form-group col s3">
+	    <div class="form-group col s4">
 	    	<input class="form-control" type="text" name="nom" placeholder="Nom">
 	    </div>
-	    <div class="form-group col s3">
-	    	<input class="form-control" type="text" name="jour" placeholder="Jour">
-	    	<input class="form-control" type="text" name="mois" placeholder="Mois">
-	    	<input class="form-control" type="text" name="annee" placeholder="Annee">
-		</div>
-	    <div class="selecttype input-field form-group col s3">
+	    <div class="selecttype input-field form-group col s4">
 	    <select name="link">
-	    	<option value="" disabled selected>Relation</option>
+	    	<option value="" selected>Relation</option>
 			<option value="Mère">Mère</option>
 			<option value="Père">Père</option>
 			<option value="Fille">Fille</option>
@@ -56,7 +51,72 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 		</select>
 		</div>
 		</div>
-	        <button class="btn btnmain white" type="submit">Ajouter</button>
+		<div class="row">
+			<div class="form-group col s4">
+	    <select name="jour" /> 
+	    <option value="" selected>Jour de naissance</option>
+	 <option>1</option>       
+    <option>2</option>       
+    <option>3</option>       
+    <option>4</option>       
+    <option>5</option>       
+    <option>6</option>       
+    <option>7</option>       
+    <option>8</option>       
+    <option>9</option>       
+    <option>10</option>       
+    <option>11</option>       
+    <option>12</option>       
+    <option>13</option>       
+    <option>14</option>       
+    <option>15</option>       
+    <option>16</option>       
+    <option>17</option>       
+    <option>18</option>       
+    <option>19</option>       
+    <option>20</option>       
+    <option>21</option>       
+    <option>22</option>       
+    <option>23</option>       
+    <option>24</option>       
+    <option>25</option>       
+    <option>26</option>       
+    <option>27</option>       
+    <option>28</option>       
+    <option>29</option>       
+    <option>30</option>       
+    <option>31</option>   
+    </select>
+    </div>
+    <div class="form-group col s4">
+    <select name="mois" /> 
+    <option value="" selected>Mois de naissance</option>
+	 <option>1</option>       
+    <option>2</option>       
+    <option>3</option>       
+    <option>4</option>       
+    <option>5</option>       
+    <option>6</option>       
+    <option>7</option>       
+    <option>8</option>       
+    <option>9</option>       
+    <option>10</option>       
+    <option>11</option>       
+    <option>12</option>        
+    </select>
+    </div>
+    <div class="form-group col s4">
+    <?php // selection de l'année
+$earliest_year = 1900;
+print '<select name="annee"><option value="" selected>Année de naissance</option>';
+foreach (range(date('Y'), $earliest_year) as $x) { print '<option value="'.$x.'">'.$x.'</option>'; }
+print '</select>'; ?>
+		</div>
+		</div>
+		
+<div><center>
+	        <button class="btn btnmain white" type="submit">Ajouter</button></center>
+	        </div>
 	    </form>
 	    <?php
     }

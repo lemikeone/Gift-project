@@ -6,7 +6,7 @@ $nextbirthday = get_next_birthday($donnees['datedenaissance']);
         <div class="flux">
         
 
-        <h2><a href="fiche-proche.php?idproche=<?php echo $donnees['ID'] ?>"><?php echo $donnees['prenom']; ?> <?php echo $donnees['nom']; ?></a></h2>
+        <h2><a href="fiche-proche.php?idproche=<?php echo $donnees['ID'] ?>"><?php echo htmlspecialchars($donnees['prenom']); ?> <?php echo htmlspecialchars($donnees['nom']); ?></a></h2>
         <p><i class="fa fa-birthday-cake" aria-hidden="true"></i> Anniversaire : 
 
 		<?php 
