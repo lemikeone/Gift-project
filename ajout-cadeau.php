@@ -1,7 +1,8 @@
 <?php include("sessionstart.php"); ?>
 <?php
 
-$bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root');
+include("configuration.php");
+$bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $password);
 
 // Recuperation des données de proche
 $url = $_POST['url'];

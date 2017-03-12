@@ -17,20 +17,20 @@
 
 <?php
 
-if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
+if (isset($_SESSION['id']) AND isset($_SESSION['email']))
 	{  
 		?>
 		<h1>Ajouter un proche</h1>
 	    <form method="POST" action="ajout-friend.php">
 	    <div class="row">
-	    <div class="form-group col s4">
+	    <div class="form-group col-md-4">
 	    	<input class="form-control" type="text" name="prenom" placeholder="Prenom">
 		</div>
-	    <div class="form-group col s4">
+	    <div class="form-group col-md-4">
 	    	<input class="form-control" type="text" name="nom" placeholder="Nom">
 	    </div>
-	    <div class="selecttype input-field form-group col s4">
-	    <select name="link">
+	    <div class="selecttype input-field form-group col-md-4">
+	    <select name="link" class="form-control">
 	    	<option value="" selected>Relation</option>
 			<option value="Mère">Mère</option>
 			<option value="Père">Père</option>
@@ -52,8 +52,8 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
 		</div>
 		</div>
 		<div class="row">
-			<div class="form-group col s4">
-	    <select name="jour" /> 
+			<div class="form-group col-md-4">
+	    <select name="jour" class="form-control" /> 
 	    <option value="" selected>Jour de naissance</option>
 	 <option>1</option>       
     <option>2</option>       
@@ -88,8 +88,8 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
     <option>31</option>   
     </select>
     </div>
-    <div class="form-group col s4">
-    <select name="mois" /> 
+    <div class="form-group col-md-4">
+    <select name="mois" class="form-control" /> 
     <option value="" selected>Mois de naissance</option>
 	 <option>1</option>       
     <option>2</option>       
@@ -105,18 +105,23 @@ if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
     <option>12</option>        
     </select>
     </div>
-    <div class="form-group col s4">
+    <div class="form-group col-md-4">
     <?php // selection de l'année
 $earliest_year = 1900;
-print '<select name="annee"><option value="" selected>Année de naissance</option>';
+print '<select name="annee" class="form-control"><option value="" selected>Année de naissance</option>';
 foreach (range(date('Y'), $earliest_year) as $x) { print '<option value="'.$x.'">'.$x.'</option>'; }
 print '</select>'; ?>
 		</div>
 		</div>
 		
-<div><center>
-	        <button class="btn btnmain white" type="submit">Ajouter</button></center>
+<div class="row">
+<div class="form-group col-md-4"></div>
+<div class="form-group col-md-4">
+	        <button class="btn btn-default btn-block" type="submit">Ajouter le proche</button></center>
 	        </div>
+            <div class="form-group col-md-4"></div>
+
+</div>
 	    </form>
 	    <?php
     }

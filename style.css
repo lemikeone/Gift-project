@@ -8,6 +8,7 @@ border-style:solid;
 box-shadow: 0px 0px 0px grey;
 background-color: white;
 padding: 0px 20px 0px 20px ;
+max-width: 1008px
 }
 
 .containerflux {
@@ -24,13 +25,6 @@ padding-right: 0px;
 padding-left: 0px;
 }
 
-.listeproches
-{
-	margin-top: 0px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
 .case {
 	border-color: #eee;
 	border-radius: 5px;
@@ -41,8 +35,11 @@ padding-left: 0px;
 	padding: 20px 0px 20px 0px
 }
 
-nav ul a {
-	color: black;
+.case2 {
+	border-color: #eee;
+	border-radius: 5px;
+	border-style:solid;
+	border-width:1px;
 }
 
 .flux {
@@ -55,61 +52,25 @@ nav ul a {
 	border-style:solid;
 }
 
-.btnmain {
-	color: black;
-}
-
-.selecttype {
-margin-top: 0px;
-}
-
-.gift {
-    margin-left: 0px;
-}
-
-.row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-  flex-wrap: wrap;
-}
-.row > [class*='col-'] {
-  display: flex;
-  flex-direction: column;
-}
-
-.cardsgiftsprofile {
-padding: 5px;
-display: flex;
-flex-direction: column;
-height: 100%;
-
-}
-
-.button100 {
-	width: 100%;
-}
-
 h1, h2, h3 {
 font-weight:lighter;
-}
-
-h2 {
-    font-size: 2rem;
 }
 
 body {
 background-color:#efefef;
 }
 
-.nomargin {
-	margin-left:0px !important;
-	margin-bottom: 30px;
-	margin-right: 0px !important;
-	width: 100%;
+.flex {
+   display: flex;
+  flex-wrap: wrap;
 }
 
-.nomargincol {
-	margin-left:0px !important;
-}
+
+
+
+    .footer
+
+    {background-color: #262F36;
+    	padding-top: 20px;
+    	padding-bottom: 20px;
+    	color: white;}

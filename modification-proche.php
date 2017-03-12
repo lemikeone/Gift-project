@@ -19,7 +19,8 @@ include("header.php");
 
 $idproche = $_GET['idproche'];
 
-$bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root' );
+include("configuration.php");
+$bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $password);
 
 $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE id = ?');
 $reponse->execute(array($idproche));
@@ -30,15 +31,15 @@ $donnees = $reponse->fetch();
 
 <form method="POST" action="modification-proche-ok.php">
 <div class="row">
-      <div class="form-group col s4">
+      <div class="form-group col-md-4">
         <input class="form-control" type="text" name="prenom" placeholder="<?php echo htmlspecialchars($donnees['prenom']); ?>">
     </div>
-    <div class="form-group col s4">
+    <div class="form-group col-md-4">
         <input class="form-control" type="text" name="nom" placeholder="<?php echo htmlspecialchars($donnees['nom']); ?>">
       </div>
       
 
-      <div class="form-group col s4">
+      <div class="form-group col-md-4">
       <select class="form-control" name="link">
       <option value="Mère" <?php if ($donnees['link'] == 'Mère') {echo ('selected="selected"');}?> >Mère</option>
       <option value="Père" <?php if ($donnees['link'] == 'Père') {echo ('selected="selected"');}?> >Père</option>
@@ -60,8 +61,8 @@ $donnees = $reponse->fetch();
     </div>
     </div>
     <div class="row">
-    <div class="form-group col s4">
-        <select name="jour" /> 
+    <div class="form-group col-md-4">
+        <select class="form-control" name="jour" /> 
       <option value="<?php echo substr($donnees['datedenaissance'], 8, 2) ?>" selected>Jour : <?php echo substr($donnees['datedenaissance'], 8, 2)?></option>
    <option>1</option>       
     <option>2</option>       
@@ -97,9 +98,9 @@ $donnees = $reponse->fetch();
     </select>
         </div>
 
-        <div class="form-group col s4">
+        <div class="form-group col-md-4">
         
-<select name="mois" /> 
+<select class="form-control" name="mois" /> 
     <option value="<?php echo substr($donnees['datedenaissance'], 5, 2); ?>" selected>Mois : <?php echo substr($donnees['datedenaissance'], 5, 2); ?></option>
    <option>1</option>       
     <option>2</option>       
@@ -117,11 +118,11 @@ $donnees = $reponse->fetch();
 
 
         </div>
-        <div class="form-group col s4">
+        <div class="form-group col-md-4">
        
        <?php // selection de l'année
 $earliest_year = 1900;
-?><select name="annee"><option value="<?php echo substr($donnees['anneenaissance'], 0, 4); ?>" selected>Année : <?php 
+?><select class="form-control" name="annee"><option value="<?php echo substr($donnees['anneenaissance'], 0, 4); ?>" selected>Année : <?php 
         if ($donnees['anneenaissance'] != "0000-00-00") {
           echo substr($donnees['anneenaissance'], 0, 4); 
         } ?></option>' <?php
@@ -132,12 +133,33 @@ print '</select>'; ?>
 
     </div>
     <input type="hidden" name="idproche" value="<?php echo "$idproche"; ?>">
-          <button class="btn btnmain white" type="submit">Modifier</button>
+    
+    <div class="row">
+
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+
+          <button class="btn btn-default btn-block" type="submit">Modifier</button>
+          </div>
+          <div class="col-md-4">
+</div>
+        </div>
       </form>
       <br>
-      <form method="POST" action="delete-proche.php">
+
+    <form method="POST" action="delete-proche.php">
+    <div class="row">
+
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
       <input type="hidden" name="idproche" value="<?php echo "$idproche"; ?>">
-       <button class="btn red" onclick="return confirm('Etes vous sûr ? Le contact ne pourra pas être récupéré.')" type="submit">Supprimer le proche</button>
+       <button class="btn btn-danger btn-block" onclick="return confirm('Etes vous sûr ? Le contact ne pourra pas être récupéré.')" type="submit">Supprimer le proche</button>
+</div>
+<div class="col-md-4">
+</div>
+</div>
 </form>
 <br/><br/>
 <?php include("footer.php"); ?>

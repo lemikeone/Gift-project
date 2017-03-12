@@ -1,6 +1,7 @@
 <?php 
 
-$bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root');
+include("configuration.php");
+$bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $password);
 
 // Hachage du mot de passe
 $pass_hache = sha1($_POST['pass']);

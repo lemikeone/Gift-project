@@ -7,8 +7,6 @@
 </head>
 <body>
 
-<br/>
-
 <?php 
 include("menu.php");
 include("header.php"); ?>
@@ -34,7 +32,7 @@ include("header.php"); ?>
 		<div class="form-group">
 		<input class="form-control" type="text" name="email" placeholder="Adresse email">
 		</div>
-		<button class="btn btn-default" type="submit">Ok</button>
+		<button class="btn btn-default" type="submit">Créer le compte</button>
 	    </form>
 	    <br/>
 	    <?php 

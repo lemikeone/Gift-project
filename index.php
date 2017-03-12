@@ -10,20 +10,24 @@
 <?php 
 include("menu.php");
 ?>
-<div class="container containerflux">
 <?php
 // Ouverture de la BDD
-$bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root' );
+include("configuration.php");
+$bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $password);
 
 // If connected
-if (isset($_SESSION['id']) AND isset($_SESSION['pseudo']))
+if (isset($_SESSION['id']) AND isset($_SESSION['email']))
     {
+ ?><div class="container containerflux"><h1>Les évenements à venir :</h1><?php
 include("flux.php");
 // Fin du IF pour les personnes connectées
 }
-?>
 
-<br/><br/>
+else {
+	include("home.php");
+}
+
+?>
 <?php include("footer.php"); ?>
 
 </body>

@@ -51,7 +51,8 @@ setlocale(LC_TIME, 'fr_FR');
 
 $idproche = $_GET['idproche'];
 
-$bdd = new PDO('mysql:host=localhost;dbname=gift-project;charset=utf8', 'root', 'root' );
+include("configuration.php");
+$bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $password);
 
 $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE id = ?');
 $reponse->execute(array($idproche));
@@ -67,15 +68,18 @@ $duree = floor((strtotime($nextbirthday) - time()));
 
 ?>
 <h1><?php echo htmlspecialchars($donnees['prenom']); ?> <?php echo htmlspecialchars($donnees['nom']); ?></h1>
-
-<a class="btn btnmain white" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier</i></a>
-<br><br>
 Date de naissance : 
 
 <?php 
 if ($donnees['datedenaissance'] != 0000-00-00) {
-echo strftime("%e %B", strtotime($donnees['datedenaissance'])); }
+echo strftime("%e %B", strtotime($donnees['datedenaissance'])); 
+
+if ($donnees['anneenaissance'] != 0000-00-00) {
+  echo " ".substr($donnees['anneenaissance'], 0, 4);
+}
+}
 else {echo "Date non renseignée";}
+
 ?>
 <br>
 Lien : <?php echo htmlspecialchars($donnees['link']) ?>
@@ -92,16 +96,21 @@ Lien : <?php echo htmlspecialchars($donnees['link']) ?>
         <?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i>
  Dans ', floor((strtotime($nextbirthday) - time())/86400); echo " jours</p>"; }
  ?> 
+ <a class="btn btn-default btn-xs" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier le contact</i></a>
 <h2>Ajouter une idée cadeau</h2>
 
 <form method="POST" action="ajout-cadeau.php">
 <div class="row">
-<div class="form-group col s9">
+<div class="form-group col-md-9">
+<div class="input-group"> 
+<div class="input-group-addon">www</div>
 <input class="form-control" type="text" name="url" placeholder="Entrez l'URL de la page du cadeau...">
 </div>
+</div>
 <input type="hidden" name="idproche" value="<?php echo "$idproche"; ?>">
-<div class="form-group col s3">
-<button class="btn btnmain white button100" type="submit">Ajouter</button>
+<div class="form-group col-md-3">
+<button class="btn btn-default btn-block" type="submit">Ajouter</button>
+</div>
 </div>
 </form>
 <br>
@@ -110,17 +119,17 @@ Lien : <?php echo htmlspecialchars($donnees['link']) ?>
 $reponse = $bdd->prepare('SELECT * FROM usersgifts WHERE procheid = ? ORDER BY ID DESC');
 $reponse->execute(array($idproche));
 ?>
-<div class="row nomargin">
+
+<div class="row flex">
 <?php
 while ($donnees = $reponse->fetch())
     {
   ?>
-  <div class="col s4 nomargin">
-  <div class="card cardsgiftsprofile">
+  <div class="col-md-4">
+ 
 
 <a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></center></i></a>
-<center><a href="suppressioncadeau.php?idgift=<?php echo $donnees['ID']; ?>">Supprimer</a></center>
-</div>
+<center><a href="suppressioncadeau.php?idgift=<?php echo $donnees['ID']; ?>" class="btn btn-default btn-xs">Supprimer</a></center>
 </div>
 <?php
 
