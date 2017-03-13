@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Le Petit Cadeau</title>
+	<title>Créer un compte</title>
 	<?php include("styles.php"); ?>
 </head>
 <body>

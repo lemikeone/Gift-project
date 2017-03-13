@@ -15,7 +15,7 @@ $nextbirthday = get_next_birthday($donnees['datedenaissance']);
          echo (age($datecomplete)+1); ?> ans <?php
 }
 
-        ?> le <?php echo strftime("%A %e %B %Y", strtotime($nextbirthday)); ?></p>
+        ?> le <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime($nextbirthday))); ?></p>
         <?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i> Dans ', floor((strtotime($nextbirthday) - time())/86400); echo " jours</p>"; ?><a href="fiche-proche.php?idproche=<?php echo $donnees['ID'] ?>" class="btn btn-default btn-xs">Ajouter / voir vos idées cadeaux</a>
 
 

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Le Petit Cadeau</title>
+	<title>Modifier un proche</title>
 	<?php include("styles.php"); ?>
 </head>
 <body>

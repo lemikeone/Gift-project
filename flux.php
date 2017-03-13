@@ -42,8 +42,16 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
         }
 
 // On affiche Saint-Valentin si on est avant le 14 Février de l'année en cours 
-if (date('m-d', time()) <= "02-14") {
-    include("feed-saint-valentin.php");
+if (date('m-d-Y', time()) < "02-14-".date('Y', time())) {
+    ?><div class="flux">
+<h2>Saint-Valentin</h2>
+ <p><i class="fa fa-heart" aria-hidden="true"></i>  <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime(date('Y', time())."-02-14"))); 
+ ?> 
+
+<?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i> Dans ', floor((strtotime(date('Y', time())."-02-14") - time())/86400); echo " jours</p>"; ?>
+
+
+  </div> <?php
     }
 
 // On sort les anniversaires après le 14/02 avant la fête des grandmeres ET après la date en cours
@@ -60,7 +68,10 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
 if (date('m-d', time()) <= substr($FeteDesGrandsMeres, -5)) {
    ?><div class="flux">
 <h2>Fête des Grands Mères</h2>
-<p><i class="fa fa-female" aria-hidden="true"></i> <?php echo $FeteDesGrandsMeres; ?></p>
+
+<p><i class="fa fa-female" aria-hidden="true"></i> <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime($FeteDesGrandsMeres))); ?> </p>
+<?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i> Dans ', floor((strtotime($FeteDesGrandsMeres) - time())/86400); echo " jours</p>"; ?>
+
 </div><?php
     }
 
@@ -78,7 +89,8 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
 if (date('m-d', time()) <= substr($feteDesMeres, -5)) {
     ?><div class="flux">
 <h2>Fête des mères</h2>
-<p><i class="fa fa-female" aria-hidden="true"></i> <?php echo $feteDesMeres; ?></p>
+<p><i class="fa fa-female" aria-hidden="true"></i> <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime($feteDesMeres))); ?> </p>
+<?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i> Dans ', floor((strtotime($feteDesMeres) - time())/86400); echo " jours</p>"; ?>
 </div><?php
     }
 
@@ -96,7 +108,10 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
 if (date('m-d', time()) <= substr($feteDesPeres, -5)) {
     ?><div class="flux">
 <h2>Fête des pères</h2>
-<p><i class="fa fa-male" aria-hidden="true"></i> <?php echo $feteDesPeres; ?></p>
+
+<p><i class="fa fa-male" aria-hidden="true"></i> <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime($feteDesPeres))); ?> </p>
+<?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i> Dans ', floor((strtotime($feteDesPeres) - time())/86400); echo " jours</p>"; ?>
+
 </div><?php
     }
 
@@ -111,8 +126,16 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
         }
 
 // On affiche Noël si on est avant le 24 décembre de l'année en cours 
-if (date('m-d', time()) <= "12-24") {
-    include("feed-noel.php");
+if (date('m-d-Y', time()) < "12-24-".date('Y', time())) {
+    ?><div class="flux">
+<h2>Noël</h2>
+ <p><i class="fa fa-tree" aria-hidden="true"></i>  <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime(date('Y', time())."-12-24"))); 
+ ?> 
+
+<?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i> Dans ', floor((strtotime(date('Y', time())."-12-24") - time())/86400); echo " jours</p>"; ?>
+
+
+  </div> <?php
     }
 
 // On sort les anniversaires après Noël dans l'année en cours
@@ -136,9 +159,17 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
         }
 
 // On affiche on affiche la saint valentin si on est déjà après la saint valentin de l'année en cours 
-if (date('m-d', time()) > "02-14") {
-include("feed-saint-valentin.php");
-}
+if (date('m-d-Y', time()) > "02-14-".date('Y', time())) {
+    ?><div class="flux">
+<h2>Saint-Valentin</h2>
+ <p><i class="fa fa-heart" aria-hidden="true"></i>  <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime((date('Y', time())+1)."-02-14"))); 
+ ?> 
+
+<?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i> Dans ', floor((strtotime((date('Y', time())+1)."-02-14") - time())/86400); echo " jours</p>"; ?>
+
+
+  </div> <?php
+    }
 
 // On sort les anniversaires après le 14/02 avant la fête des grandsmeres ET avant la date en cours
 $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) > "02-14" AND SUBSTR(`datedenaissance`,6) <= ? AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
@@ -154,7 +185,10 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
 if (date('m-d', time()) > substr($FeteDesGrandsMeres2, -5)) {
      ?><div class="flux">
 <h2>Fête des Grands Mères</h2>
-<p><i class="fa fa-female" aria-hidden="true"></i> <?php echo $FeteDesGrandsMeres2; ?></p>
+
+<p><i class="fa fa-female" aria-hidden="true"></i> <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime($FeteDesGrandsMeres2))); ?> </p>
+<?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i> Dans ', floor((strtotime($FeteDesGrandsMeres2) - time())/86400); echo " jours</p>"; ?>
+
 </div><?php
     }
 
@@ -172,7 +206,9 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
 if (date('m-d', time()) > substr($feteDesMeres2, -5)) {
     ?><div class="flux">
 <h2>Fête des mères</h2>
-<p><i class="fa fa-female" aria-hidden="true"></i> <?php echo $feteDesMeres2; ?></p>
+
+<p><i class="fa fa-female" aria-hidden="true"></i> <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime($feteDesMeres2))); ?> </p>
+<?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i> Dans ', floor((strtotime($feteDesMeres2) - time())/86400); echo " jours</p>"; ?>
 </div><?php
     }
 
@@ -190,7 +226,10 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
 if (date('m-d', time()) > substr($feteDesPeres2, -5)) {
     ?><div class="flux">
 <h2>Fête des pères</h2>
-<p><i class="fa fa-male" aria-hidden="true"></i> <?php echo $feteDesPeres2; ?></p>
+
+<p><i class="fa fa-female" aria-hidden="true"></i> <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime($feteDesPeres2))); ?> </p>
+<?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i> Dans ', floor((strtotime($feteDesPeres2) - time())/86400); echo " jours</p>"; ?>
+
 </div><?php
     }
 
@@ -207,9 +246,17 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
         }
 
 // On affiche Noël si on est après le 24 décembre de l'année en cours 
-if (date('m-d', time()) > "12-24") {
-include("feed-noel.php");
-}
+if (date('m-d-Y', time()) > "12-24-".date('Y', time())) {
+    ?><div class="flux">
+<h2>Noël</h2>
+ <p><i class="fa fa-tree" aria-hidden="true"></i>  <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime((date('Y', time())+1)."-12-24"))); 
+ ?> 
+
+<?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i> Dans ', floor((strtotime((date('Y', time())+1)."-12-24") - time())/86400); echo " jours</p>"; ?>
+
+
+  </div> <?php
+    }
 
 // On sort les anniversaires avant la date en cours et apres Noël
 $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) AND SUBSTR(`datedenaissance`,6) > "12-24" ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');

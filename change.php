@@ -1,3 +1,16 @@
+<?php include("sessionstart.php"); ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Réinitialisation mot de passe</title>
+	<?php include("styles.php"); ?>
+</head>
+<body>
+
+<?php 
+include("menu.php");
+include("header.php"); ?>
+
 <?php
 // Connect to MySQL
 
@@ -42,7 +55,7 @@ if (isset($_POST["ForgotPassword"])) {
 		$pwrurl = "http://giftendly.com/reset-password.php?q=".$password;
 		
 		// Mail them their key
-		$mailbody = "Cher utilisiteur, pour reinitialiser votre mot de passe, cliquez sur le lien suivant, ou copier le et collez le dans votre navigateur" . $pwrurl . "\nMerci,,\nGiftendly";
+		$mailbody = "Cher utilisateur, pour reinitialiser votre mot de passe, cliquez sur le lien suivant, ou copier le et collez le dans votre navigateur : " . $pwrurl . "\n\nMerci,\nGiftendly";
 		mail($userExists["email"], "Giftenly - Reinitialisation de votre mot de passe", $mailbody);
 		echo "Votre lien de Reinitialisation de mot de passe vous a été envoyé par email.";
 		
@@ -50,4 +63,9 @@ if (isset($_POST["ForgotPassword"])) {
 	else
 		echo "Pas d'utilisateur avec cette adresse email.";
 }
+
+include("footer.php");
 ?>
+
+</body>
+</html>

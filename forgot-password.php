@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Le Petit Cadeau</title>
+	<title>Mot de passe oublié</title>
 	<?php include("styles.php"); ?>
 </head>
 <body>

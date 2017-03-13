@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Le Petit Cadeau</title>
+	<title>Giftendly : Vos proches</title>
 	<?php include("styles.php"); ?>
 </head>
 <body>
@@ -72,7 +72,7 @@ Date de naissance :
 
 <?php 
 if ($donnees['datedenaissance'] != 0000-00-00) {
-echo strftime("%e %B", strtotime($donnees['datedenaissance'])); 
+echo utf8_encode(strftime("%e %B", strtotime($donnees['datedenaissance']))); 
 
 if ($donnees['anneenaissance'] != 0000-00-00) {
   echo " ".substr($donnees['anneenaissance'], 0, 4);
@@ -92,7 +92,7 @@ Lien : <?php echo htmlspecialchars($donnees['link']) ?>
     $datecomplete = substr($donnees['anneenaissance'], 0, 4).substr($donnees['datedenaissance'], 4);
          echo (age($datecomplete)+1); ?> ans <?php
 }
-        ?> le <?php echo strftime("%A %e %B %Y", strtotime($nextbirthday)); ?></p>
+        ?> le <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime($nextbirthday))); ?></p>
         <?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i>
  Dans ', floor((strtotime($nextbirthday) - time())/86400); echo " jours</p>"; }
  ?> 
@@ -125,7 +125,7 @@ $reponse->execute(array($idproche));
 while ($donnees = $reponse->fetch())
     {
   ?>
-  <div class="col-md-4">
+  <div class="col-md-4 col-xs-12">
  
 
 <a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></center></i></a>

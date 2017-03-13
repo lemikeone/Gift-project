@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Le Petit Cadeau</title>
+	<title>Idées cadeaux</title>
 	<?php include("styles.php"); ?>
 </head>
 <body>
@@ -54,7 +54,7 @@ $reponse->execute();
 while ($donnees = $reponse->fetch())
     {
   ?>
-  <div class="col-md-4">
+  <div class="col-md-4 col-xs-12">
  
 
 <a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></center></i></a>

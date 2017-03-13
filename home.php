@@ -2,15 +2,16 @@
 <style ="text/css">
 .modules {
 	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .modulesint {
-	padding: 50px;
+	padding: 30px 50px 30px 50px;
 	border-style: solid;
 	border-width: 0px;
 	border-color: white;
 	border-radius: 1px;
-	margin: 10px 20px 40px 20px;
+	margin: 0px 20px 0px 20px;
 	color: #565656;
 
 }
@@ -62,6 +63,7 @@
 		background-image: url(home.jpg);
 		margin-top: -20px;
 		padding-top: 50px;
+		background-attachment: fixed;
 
 		}
 
@@ -71,14 +73,20 @@
 		font-weight:lighter;
 }
 
+.logo {
+	max-width: 70%;
+	max-height: 100px;
+}
+
 </style>
 
 <div class="homecover">
 	<center>
-	<img src="logo-white.png" height="100px" alt="">
+	<br>
+	<img class="logo" src="logo-white.png"  alt="">
 	<p class="titre">N'oubliez plus vos proches</p>
 	<br><br>
-	<a class="btn btn-lg btnhome" href="create-account.php">Créer un compte</a>
+	<a class="btn btn-lg btnhome" href="create-account.php">Créer un compte</a><br><br>
 	</center>
 </div>
 <div class="row modules">

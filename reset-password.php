@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Le Petit Cadeau</title>
+	<title>Giftendly : Reinitialisation de mot de passe</title>
 	<?php include("styles.php"); ?>
 </head>
 <body>

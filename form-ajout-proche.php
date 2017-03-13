@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Le Petit Cadeau</title>
+	<title>Ajouter un proche</title>
 	<?php include("styles.php"); ?>
 </head>
 <body>
@@ -108,7 +108,7 @@ if (isset($_SESSION['id']) AND isset($_SESSION['email']))
     <div class="form-group col-md-4">
     <?php // selection de l'année
 $earliest_year = 1900;
-print '<select name="annee" class="form-control"><option value="" selected>Année de naissance</option>';
+print '<select name="annee" class="form-control"><option value="" selected>Année de naissance (optionnel)</option>';
 foreach (range(date('Y'), $earliest_year) as $x) { print '<option value="'.$x.'">'.$x.'</option>'; }
 print '</select>'; ?>
 		</div>
