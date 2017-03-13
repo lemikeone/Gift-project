@@ -20,6 +20,9 @@
 		<input class="form-control" type="password" name="pass"  placeholder="Mot de passe"></div>
 		<button type="submit" class="btn btn-default">Se connecter</button>
 	    </form>
+	    <br>
+	    <a href="forgot-password.php">Mot de passe oublié ? </a>
+	    <br>
 	    <?php 
 	    }
 ?>

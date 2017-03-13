@@ -82,7 +82,7 @@
 	</center>
 </div>
 <div class="row modules">
-		<div class="col-md-4 text-center"><div class="modulesint"><i class="fa fa-calendar-check-o fa-4x icon1" aria-hidden="true"></i><br><br>Rappel des évenements de vos proches</div></div>
-<div class="col-md-4 text-center"><div class="modulesint"><i class="fa fa-gift fa-4x icon2" aria-hidden="true"></i><br><br>Listes de cadeaux et recommandations</div></div>
-<div class="col-md-4 text-center"><div class="modulesint"><i class="fa fa-heart fa-4x icon3" aria-hidden="true"></i><br><br>Rappel des Fêtes</div></div>
+		<div class="col-md-4 text-center "><div class="modulesint"><i class="fa fa-calendar-check-o fa-4x icon1" aria-hidden="true"></i><br><br><p class="titresblocs">Rappel des évenements <br>de vos proches</p></div></div>
+<div class="col-md-4 text-center"><div class="modulesint"><i class="fa fa-gift fa-4x icon2" aria-hidden="true"></i><br><br><p class="titresblocs">Listes de cadeaux et recommandations</p></div></div>
+<div class="col-md-4 text-center"><div class="modulesint"><i class="fa fa-heart fa-4x icon3" aria-hidden="true"></i><br><br><p class="titresblocs">Rappel des Fêtes</p></div></div>
 	</div>

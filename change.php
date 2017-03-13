@@ -33,21 +33,21 @@ if (isset($_POST["ForgotPassword"])) {
 	if ($userExists["email"])
 	{
 		// Create a unique salt. This will never leave PHP unencrypted.
-		$salt = "498#2D83B631%3800EBD!801600D*7E3CC13";
+		$salt = "89798S7D*!LKJ887#98!*";
 
 		// Create the unique user password reset key
 		$password = hash('sha512', $salt.$userExists["email"]);
 
 		// Create a url which we will direct them to reset their password
-		$pwrurl = "http://localhost:8888/gift-project/reset_password.php?q=".$password;
+		$pwrurl = "http://giftendly.com/reset-password.php?q=".$password;
 		
 		// Mail them their key
-		$mailbody = "Dear user,\n\nIf this e-mail does not apply to you please ignore it. It appears that you have requested a password reset at our website www.yoursitehere.com\n\nTo reset your password, please click the link below. If you cannot click it, please paste it into your web browser's address bar.\n\n" . $pwrurl . "\n\nThanks,\nThe Administration";
-		mail($userExists["email"], "Giftenly - Password Reset", $mailbody);
-		echo "Your password recovery key has been sent to your e-mail address.";
+		$mailbody = "Cher utilisiteur, pour reinitialiser votre mot de passe, cliquez sur le lien suivant, ou copier le et collez le dans votre navigateur" . $pwrurl . "\nMerci,,\nGiftendly";
+		mail($userExists["email"], "Giftenly - Reinitialisation de votre mot de passe", $mailbody);
+		echo "Votre lien de Reinitialisation de mot de passe vous a été envoyé par email.";
 		
 	}
 	else
-		echo "No user with that e-mail address exists.";
+		echo "Pas d'utilisateur avec cette adresse email.";
 }
 ?>

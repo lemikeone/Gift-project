@@ -24,7 +24,7 @@ include("header.php"); ?>
 	    <h1>Créer un compte</h1>
 	    <form method="POST" action="create-account-ok.php" class="form-inline">
 	    <div class="form-group">
-		<input class="form-control" type="text" name="pseudo" placeholder="Pseudo">
+		<input class="form-control" type="text" name="pseudo" placeholder="Nom ou pseudo">
 		</div>
 		<div class="form-group">
 		<input class="form-control" type="password" name="pass" placeholder="Mot de passe">

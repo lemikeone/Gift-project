@@ -58,6 +58,7 @@ font-weight:lighter;
 
 body {
 background-color:#efefef;
+font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important; 
 }
 
 .flex {
@@ -65,12 +66,14 @@ background-color:#efefef;
   flex-wrap: wrap;
 }
 
-
-
-
-    .footer
+.footer
 
     {background-color: #262F36;
     	padding-top: 20px;
     	padding-bottom: 20px;
     	color: white;}
+
+.titresblocs {
+	font-weight: 500;
+	font-size: 1.8rem;
+}
