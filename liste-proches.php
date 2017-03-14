@@ -43,7 +43,7 @@ $bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $p
         <h3><a href="fiche-proche.php?idproche=<?php echo $donnees['ID'] ?>"><?php echo htmlspecialchars($donnees['prenom']); ?> <?php echo htmlspecialchars($donnees['nom']); ?></a></h3>
 <?php 
 if ($donnees['datedenaissance'] != 0000-00-00) {
-echo strftime("%e %B", strtotime($donnees['datedenaissance'])); 
+echo utf8_encode(strftime("%e %B", strtotime($donnees['datedenaissance']))); 
 if ($donnees['anneenaissance'] != 0000-00-00) {
   echo " ".substr($donnees['anneenaissance'], 0, 4);
 }

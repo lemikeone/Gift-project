@@ -6,7 +6,7 @@ $bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $p
 // Recuperation des données de proche
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
-$birthdate = "004-".$_POST['mois']."-".$_POST['jour'];
+$birthdate = "1910-".$_POST['mois']."-".$_POST['jour'];
 $link = $_POST['link'];
 $idproche = $_POST['idproche'];
 $birthyear = $_POST['annee']."-01-01";
@@ -24,13 +24,13 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE ID = ?');
         	$naissance = $donnees['datedenaissance'];
         	  }
         elseif (!empty($_POST['mois']) AND empty($_POST['jour'])) {
-        	$naissance = "004-".$_POST['mois']."-".substr($donnees['datedenaissance'], 8);
+        	$naissance = "1910-".$_POST['mois']."-".substr($donnees['datedenaissance'], 8);
         } 
         elseif (empty($_POST['mois']) AND !empty($_POST['jour'])) {
-        	$naissance = "004-".substr($donnees['datedenaissance'], 5, 2)."-".$_POST['jour'];
+        	$naissance = "1910-".substr($donnees['datedenaissance'], 5, 2)."-".$_POST['jour'];
         } 
         elseif (!empty($_POST['mois']) AND !empty($_POST['jour'])) {
-        	$naissance = "004-".$_POST['mois']."-".$_POST['jour'];
+        	$naissance = "1910-".$_POST['mois']."-".$_POST['jour'];
         } 
         
 

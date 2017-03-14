@@ -26,11 +26,13 @@ include("header.php");
 
 setlocale(LC_TIME, 'fr_FR');
 
-//Fonction to check next birthday
+ //Fonction to check next birthday
     function get_next_birthday($birthday) {
         $date = new DateTime($birthday);
         $date->modify('+' . date('Y') - $date->format('Y') . ' years');
-        if($date < new DateTime()) {
+        $dateplus = new DateTime();
+        $dateplus->modify('-1 day');
+        if($date < $dateplus) {
         $date->modify('+1 year');
         }
 
@@ -94,7 +96,7 @@ Lien : <?php echo htmlspecialchars($donnees['link']) ?>
 }
         ?> le <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime($nextbirthday))); ?></p>
         <?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i>
- Dans ', floor((strtotime($nextbirthday) - time())/86400); echo " jours</p>"; }
+ Dans ', floor((strtotime($nextbirthday) - time())/86400)+1; echo " jours</p>"; }
  ?> 
  <a class="btn btn-default btn-xs" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier le contact</i></a>
 <h2>Ajouter une idée cadeau</h2>

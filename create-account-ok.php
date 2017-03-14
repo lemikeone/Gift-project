@@ -33,7 +33,7 @@ else {
 $salt = "89798S7D*!LKJ887#98!*";
 $pass_hache = hash('sha512', $salt.$_POST['pass']);
 $pseudo = $_POST['pseudo'];
-$email = $_POST['email'];
+$email = strtolower($_POST['email']);
 
 // Insertion
 $req = $bdd->prepare('INSERT INTO users(pseudo, pass, email, signup_date) VALUES(:pseudo, :pass, :email, CURDATE())');

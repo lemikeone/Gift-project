@@ -7,7 +7,7 @@ $bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $p
 // Recuperation des données de proche
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
-$birthdate = "0004-".$_POST['mois']."-".$_POST['jour'];
+$birthdate = "1910-".$_POST['mois']."-".$_POST['jour'];
 $link = $_POST['link'];
 $birthyear = $_POST['annee']."-01-01";
 
