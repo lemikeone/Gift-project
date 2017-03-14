@@ -43,9 +43,15 @@ $bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $p
 <h1>Idées cadeaux</h1>
 <p>Retrouvez les dernières idées cadeaux proposées par les membres :</p>
 <br/>
-<?php
 
-include("button-cadeaux.php");
+<div class="text-center">
+<div class="btn-group" role="group">
+  <a href="ideescadeaux.php" class="btn btn-default active">Les plus récents</a>
+  <a href="ideescadeaux-popular.php" class="btn btn-default">Les plus populaires</a>
+</div>
+</div>
+
+<?php
 
 $reponse = $bdd->prepare('SELECT * FROM usersgifts GROUP BY url ORDER BY ID DESC LIMIT :debut, :fin');
 $reponse->bindParam(':debut', $debut, PDO::PARAM_INT);
@@ -61,12 +67,10 @@ while ($donnees = $reponse->fetch())
   <div class="col-md-4 col-xs-12">
  
 
-<a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></center></i></a>
-
-<!-- Button trigger modal -->
+ <!-- Button trigger modal -->
 <div class="text-center">
 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#<?php echo $donnees['ID']; ?>">
-  Ajouter à une liste
+ <i class="fa fa-bookmark" aria-hidden="true"></i> Ajouter à une liste
 </button>
 </div>
 <!-- Modal -->
@@ -99,6 +103,8 @@ while ($donnees = $reponse->fetch())
   </div>
 </div>
 <!-- Fin modal -->
+
+<a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></center></i></a>
 
 </div>
 

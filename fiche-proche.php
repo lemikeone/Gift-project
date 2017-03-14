@@ -128,16 +128,63 @@ while ($donnees = $reponse->fetch())
     {
   ?>
   <div class="col-md-4 col-xs-12">
- 
+
+<!-- Button trigger modal -->
+<div class="col-md-6">
+<div class="text-center">
+<button type="button" class="btn btn-default btn-xs btn-block" data-toggle="modal" data-target="#<?php echo $donnees['ID']; ?>">
+ <i class="fa fa-bookmark" aria-hidden="true"></i> Ajouter à une liste
+</button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="<?php echo $donnees['ID']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Ajouter le cadeau dans la liste d'un proche</h4>
+      </div>
+      <div class="modal-body">
+<!-- Formulaire d'ajout -->
+
+<form method="POST" action="ajout-cadeau.php">
+
+<div class="row">
+
+<div class="form-group col-md-9">
+<?php include("menu-proches.php"); ?>
+</div>
+<input type="hidden" name="url" value="<?php echo $donnees['url']; ?>">
+<div class="form-group col-md-3">
+<button class="btn btn-default btn-block" type="submit">Ajouter</button>
+</div>
+</div>
+</form>
+<!-- Fin du formulaire d'ajout -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin modal -->
+</center>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+<center><a href="suppressioncadeau.php?idgift=<?php echo $donnees['ID']; ?>" class="btn btn-default btn-xs btn-block"><i class="fa fa-times" aria-hidden="true"></i> Supprimer</a>
+</div>
+
+</div>
 
 <a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></center></i></a>
-<center><a href="suppressioncadeau.php?idgift=<?php echo $donnees['ID']; ?>" class="btn btn-default btn-xs">Supprimer</a></center>
 </div>
 <?php
 
         }
 ?>
 </div>
+<br><br>
+<div><center><a class="btn btn-default""  href="ideescadeaux.php">Consulter des idées cadeaux</a></center></div>
 <?php 
 }
 

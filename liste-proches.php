@@ -16,7 +16,12 @@
 
 <?php 
 include("menu.php");
-include("header.php");
+
+?>
+
+<div class="container containerflux">
+
+<?php
 
 setlocale(LC_TIME, 'fr_FR'); 
 
@@ -39,7 +44,7 @@ $bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $p
         ?>
         
         <div class="col-md-3">
-        <div class="case">
+        <div class="caselisteproches">
         <h3><a href="fiche-proche.php?idproche=<?php echo $donnees['ID'] ?>"><?php echo htmlspecialchars($donnees['prenom']); ?> <?php echo htmlspecialchars($donnees['nom']); ?></a></h3>
 <?php 
 if ($donnees['datedenaissance'] != 0000-00-00) {
@@ -58,8 +63,8 @@ else {echo "Date non renseignée";}
     }
     ?>
     <div class="col-md-3">
-        <div class="case casemarge">
-        <a href="form-ajout-proche.php"><i class="fa fa-plus-circle fa-5x" aria-hidden="true"></i></a>
+        <div class="caselisteproches casemarge">
+        <a href="form-ajout-proche.php"><i class="fa fa-plus fa-5x" aria-hidden="true"></i></a>
         </div></div></div>
 
 <br/><br/>
