@@ -4,7 +4,7 @@
 include("configuration.php");
 $bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $password);
 
-// Recuperation des données de proche
+// Recuperation des données de proche (On eleve les paramètres des URL au passage)
 $url = $url = strtok($_POST['url'], '?');
 $idproche = $_POST['idproche'];
 

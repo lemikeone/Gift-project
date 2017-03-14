@@ -12,16 +12,16 @@ include("menu.php");
 include("header.php"); ?>
 
 <?php echo '
-<form action="reset.php" method="POST">
-E-mail Address: <input type="text" name="email" size="20" placeholder="Adresse email" /><br />
-New Password: <input type="password" name="password" size="20" placeholder="Mot de passe" /><br />
-Confirm Password: <input type="password" name="confirmpassword" size="20" placeholder="Confirmer le mot de passe"/><br />
+<br><form action="reset.php" method="POST">
+ <input type="text" class="form-control" name="email" size="20" placeholder="Adresse email" /><br />
+<input type="password" name="password" class="form-control" size="20" placeholder="Mot de passe" /><br />
+ <input type="password" name="confirmpassword" class="form-control" size="20" placeholder="Confirmer le mot de passe"/><br />
 <input type="hidden" name="q" value="';
 if (isset($_GET["q"])) {
 	echo $_GET["q"];
 }
-	echo '" /><input type="submit" name="ResetPasswordForm" value="Réinitialiser mon mot de passe" />
-</form>';
+	echo '" /><input type="submit" class="btn btn-default" name="ResetPasswordForm" value="Réinitialiser mon mot de passe" />
+</form><br>';
 
 include("footer.php");
 ?>

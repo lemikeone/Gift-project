@@ -53,10 +53,12 @@ if (isset($_POST["ForgotPassword"])) {
 
 		// Create a url which we will direct them to reset their password
 		$pwrurl = "http://giftendly.com/reset-password.php?q=".$password;
+
+		$headers = 'From: Giftendly <noreply@ngiftendly.com>';
 		
 		// Mail them their key
-		$mailbody = "Cher utilisateur, pour reinitialiser votre mot de passe, cliquez sur le lien suivant, ou copier le et collez le dans votre navigateur : " . $pwrurl . "\n\nMerci,\nGiftendly";
-		mail($userExists["email"], "Giftenly - Reinitialisation de votre mot de passe", $mailbody);
+		$mailbody = "Cher utilisateur,\n\nPour réinitialiser votre mot de passe, cliquez sur le lien suivant, ou copiez le et collez le dans votre navigateur : " . $pwrurl . "\n\nMerci,\nGiftendly";
+		mail($userExists["email"], "Giftenly - Reinitialisation de votre mot de passe", $mailbody, $headers);
 		echo "Votre lien de Reinitialisation de mot de passe vous a été envoyé par email.";
 		
 	}

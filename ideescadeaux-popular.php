@@ -42,12 +42,12 @@ $bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $p
 ?>
 <h1>Idées cadeaux</h1>
 <p>Retrouvez les dernières idées cadeaux proposées par les membres :</p>
-<br/>
+<br>
 <?php
 
 include("button-cadeaux.php");
 
-$reponse = $bdd->prepare('SELECT * FROM usersgifts GROUP BY url ORDER BY ID DESC LIMIT :debut, :fin');
+$reponse = $bdd->prepare('SELECT * FROM usersgifts GROUP BY url ORDER BY COUNT(url) DESC LIMIT :debut, :fin');
 $reponse->bindParam(':debut', $debut, PDO::PARAM_INT);
 $reponse->bindParam(':fin', $fin, PDO::PARAM_INT);
 $reponse->execute();
@@ -114,12 +114,12 @@ while ($donnees = $reponse->fetch())
 
 if ($pagination != 0) {
  ?>
-<a href="ideescadeaux.php?page=<?php echo $pagination - 1; ?>" class="btn btn-default"><i class="fa fa-arrow-left" aria-hidden="true"></i> Page précédente</a> <?php
+<a href="ideescadeaux-popular.php?page=<?php echo $pagination - 1; ?>" class="btn btn-default"><i class="fa fa-arrow-left" aria-hidden="true"></i> Page précédente</a> <?php
 }
 
 ?>
 
-<a href="ideescadeaux.php?page=<?php echo $pagination + 1; ?>" class="btn btn-default">Page suivante <i class="fa fa-arrow-right" aria-hidden="true"></i></a></div><br><br>
+<a href="ideescadeaux-popular.php?page=<?php echo $pagination + 1; ?>" class="btn btn-default">Page suivante <i class="fa fa-arrow-right" aria-hidden="true"></i></a></div><br><br>
 
 <?php include("footer.php"); ?>
 
