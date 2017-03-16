@@ -1,11 +1,16 @@
-<nav class="navbar navbar-default">
-
 <style type="text/css">
 	.logomenu {
 		background-color: #F7786B;
 	}
 
+	.menu {
+		margin-bottom: 50px;
+	}
+
 </style>
+
+
+<nav class="navbar navbar-default navbar-fixed-top menu">
 
 <div class="container">
 <div class="navbar-header">
@@ -48,6 +53,9 @@ if (isset($_SESSION['id']) AND isset($_SESSION['email']))
 
 
 <ul class="nav navbar-nav navbar-right">
+      <li><a href="profil.php">Profil <i class="fa fa-user-circle-o" aria-hidden="true"></i></a></li>
+      </ul>
+<ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ajouter <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -63,3 +71,4 @@ if (isset($_SESSION['id']) AND isset($_SESSION['email']))
 </div>
 </div>
 </nav>
+<div class="menu"></div>

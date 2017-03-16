@@ -66,7 +66,7 @@ while ($donnees = $reponse->fetch())
   ?>
   <div class="col-md-4 col-xs-12">
  
-<a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></center></i></a>
+<a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw pinkg"></i></center></i></a>
 
  <!-- Button trigger modal -->
 <div class="text-center">

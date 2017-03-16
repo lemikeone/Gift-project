@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Giftendly : Vos proches</title>
+	<title>Giftendly : Votre profil</title>
 	<?php include("styles.php"); ?>
 </head>
 <body>
@@ -51,57 +51,25 @@ setlocale(LC_TIME, 'fr_FR');
         return $age;
         }
 
-$idproche = $_GET['idproche'];
+if (isset($_SESSION['id'])) {
+$userid = $_SESSION['id'];
 
 include("configuration.php");
 $bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $password);
 
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE id = ?');
-$reponse->execute(array($idproche));
+$reponse = $bdd->prepare('SELECT * FROM users WHERE id = ?');
+$reponse->execute(array($userid));
 $donnees = $reponse->fetch();
 
-if (isset($_SESSION['id'])) {
-  # code...
+echo '<h1>'.$donnees['pseudo'].'</h1>';
 
-if ($donnees['iduser'] == $_SESSION['id']) {
-
-$nextbirthday = get_next_birthday($donnees['datedenaissance']);
-$duree = floor((strtotime($nextbirthday) - time()));
+// Envies
 
 ?>
-<h1><?php echo htmlspecialchars($donnees['prenom']); ?> <?php echo htmlspecialchars($donnees['nom']); ?></h1>
-Date de naissance : 
 
-<?php 
-if ($donnees['datedenaissance'] != 0000-00-00) {
-echo utf8_encode(strftime("%e %B", strtotime($donnees['datedenaissance']))); 
+<h2>Ajoutez vos envies</h2>
 
-if ($donnees['anneenaissance'] != 0000-00-00) {
-  echo " ".substr($donnees['anneenaissance'], 0, 4);
-}
-}
-else {echo "Date non renseignée";}
-
-?>
-<br>
-Lien : <?php echo htmlspecialchars($donnees['link']) ?>
-<br><br>
-<?php if ($donnees['datedenaissance'] != 0000-00-00) { ?>
-<p><i class="fa fa-birthday-cake" aria-hidden="true"></i> Anniversaire : <?php 
-    if ($donnees['anneenaissance'] != '0000-00-00') {
-      # code...
-    
-    $datecomplete = substr($donnees['anneenaissance'], 0, 4).substr($donnees['datedenaissance'], 4);
-         echo (age($datecomplete)+1); ?> ans <?php
-}
-        ?> le <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime($nextbirthday))); ?></p>
-        <?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i>
- Dans ', floor((strtotime($nextbirthday) - time())/86400)+1; echo " jours</p>"; }
- ?> 
- <a class="btn btn-default btn-xs" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier le contact</i></a>
-<h2>Ajouter une idée cadeau</h2>
-
-<form method="POST" action="ajout-cadeau.php">
+<form method="POST" action="ajoutenvie.php">
 <div class="row">
 <div class="form-group col-md-9">
 <div class="input-group"> 
@@ -109,7 +77,7 @@ Lien : <?php echo htmlspecialchars($donnees['link']) ?>
 <input class="form-control" type="text" name="url" placeholder="Entrez l'URL de la page du cadeau...">
 </div>
 </div>
-<input type="hidden" name="idproche" value="<?php echo "$idproche"; ?>">
+<input type="hidden" name="userid" value="<?php echo "$userid"; ?>">
 <div class="form-group col-md-3">
 <button class="btn btn-default btn-block" type="submit">Ajouter</button>
 </div>
@@ -118,8 +86,8 @@ Lien : <?php echo htmlspecialchars($donnees['link']) ?>
 <br>
 
 <?php
-$reponse = $bdd->prepare('SELECT * FROM usersgifts WHERE procheid = ? ORDER BY ID DESC');
-$reponse->execute(array($idproche));
+$reponse = $bdd->prepare('SELECT * FROM usersgifts WHERE userid = ? ORDER BY ID DESC');
+$reponse->execute(array($userid));
 ?>
 
 <div class="row flex">
@@ -186,17 +154,16 @@ while ($donnees = $reponse->fetch())
 ?>
 </div>
 <br><br>
-<div><center><a class="btn btn-default""  href="ideescadeaux.php">Consulter des idées cadeaux</a></center></div>
-<?php 
+<?php
+
+
+// Fin des envies
+
+
+
 }
 
-else {echo "Ce proche ne fait pas partie de votre liste de proches";}
-
-}
-
-else {echo "Vous devez être connecté pour afficher la fiche d'un proche";}
-
- ?>
+?>
 <br>
 
 <?php include("footer.php"); ?>
