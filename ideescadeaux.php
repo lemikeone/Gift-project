@@ -31,8 +31,8 @@ else {
  $pagination = 0; 
 }
 
-$debut = $pagination * 7;
-$fin = 6;
+$debut = $pagination * 12;
+$fin = 12;
 
 setlocale(LC_TIME, 'fr_FR');
 
@@ -66,6 +66,7 @@ while ($donnees = $reponse->fetch())
   ?>
   <div class="col-md-4 col-xs-12">
  
+<a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></center></i></a>
 
  <!-- Button trigger modal -->
 <div class="text-center">
@@ -103,8 +104,6 @@ while ($donnees = $reponse->fetch())
   </div>
 </div>
 <!-- Fin modal -->
-
-<a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></center></i></a>
 
 </div>
 

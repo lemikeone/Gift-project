@@ -90,7 +90,7 @@
 	</center>
 </div>
 <div class="row modules">
-		<div class="col-md-4 text-center "><div class="modulesint"><i class="fa fa-calendar-check-o fa-4x icon1" aria-hidden="true"></i><br><br><p class="titresblocs">Rappel des évenements et fêtes<br>de vos proches</p></div></div>
+		<div class="col-md-4 text-center "><div class="modulesint"><i class="fa fa-calendar-check-o fa-4x icon1" aria-hidden="true"></i><br><br><p class="titresblocs">Rappel des évenements et fêtes de vos proches</p></div></div>
 <div class="col-md-4 text-center"><div class="modulesint"><i class="fa fa-gift fa-4x icon2" aria-hidden="true"></i><br><br><p class="titresblocs">Listes de cadeaux et recommandations</p></div></div>
-<div class="col-md-4 text-center"><div class="modulesint"><i class="fa fa-bell fa-4x icon3" aria-hidden="true"></i><br><br><p class="titresblocs">Notifications aux dates clés<br>pour préparer ses idées</p></div></div>
+<div class="col-md-4 text-center"><div class="modulesint"><i class="fa fa-bell fa-4x icon3" aria-hidden="true"></i><br><br><p class="titresblocs">Notifications aux dates clés pour préparer ses idées</p></div></div>
 	</div>

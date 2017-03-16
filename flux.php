@@ -45,7 +45,7 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
 
 // On affiche Saint-Valentin si on est avant le 14 Février de l'année en cours 
 if (date('m-d-Y', time()) < "02-14-".date('Y', time())) {
-    ?><div class="flux">
+    ?><div class="flux love">
 <h2>Saint-Valentin</h2>
  <p><i class="fa fa-heart" aria-hidden="true"></i>  <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime(date('Y', time())."-02-14"))); 
  ?> 
@@ -89,7 +89,8 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
 
 // On affiche fête des mères si on est avant la fete des meres de l'année en cours 
 if (date('m-d', time()) <= substr($feteDesMeres, -5)) {
-    ?><div class="flux">
+    ?>
+    <div class="flux">
 <h2>Fête des mères</h2>
 <p><i class="fa fa-female" aria-hidden="true"></i> <?php echo utf8_encode(strftime("%A %e %B %Y", strtotime($feteDesMeres))); ?> </p>
 <?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i> Dans ', floor((strtotime($feteDesMeres) - time())/86400)+1; echo " jours</p>"; ?>

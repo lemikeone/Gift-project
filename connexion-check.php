@@ -28,6 +28,12 @@ else
     session_start();
     $_SESSION['id'] = $resultat['id'];
     $_SESSION['email'] = $email;
+
+    // Create cookies
+    setcookie('id', $resultat['id'], time() + 365*24*3600, null, null, false, true);
+    setcookie('email', $email, time() + 365*24*3600, null, null, false, true);
+
+    //Redirect to homepage
     header('Location: index.php');
     
 }

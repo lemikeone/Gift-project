@@ -16,7 +16,7 @@ $req->execute(array(
 	'url' => $url,
 	));
 
-header('Location: ' . $_SERVER['HTTP_REFERER']);
+header('Location: ' . $_SERVER['HTTP_REFERER']."?ajout=true");
 } 
 
 else {

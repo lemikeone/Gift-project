@@ -128,7 +128,9 @@ while ($donnees = $reponse->fetch())
     {
   ?>
   <div class="col-md-4 col-xs-12">
+<a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></center></i></a>
 
+<div class="row">
 <!-- Button trigger modal -->
 <div class="col-md-6">
 <div class="text-center">
@@ -169,14 +171,14 @@ while ($donnees = $reponse->fetch())
 </center>
 </div>
 
-<div class="row">
+
 <div class="col-md-6">
 <center><a href="suppressioncadeau.php?idgift=<?php echo $donnees['ID']; ?>" class="btn btn-default btn-xs btn-block"><i class="fa fa-times" aria-hidden="true"></i> Supprimer</a>
 </div>
 
-</div>
+</div> 
 
-<a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i></center></i></a>
+
 </div>
 <?php
 

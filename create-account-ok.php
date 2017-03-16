@@ -42,8 +42,15 @@ $req->execute(array(
     'pseudo' => $pseudo,
     'pass' => $pass_hache,
     'email' => $email));
+?>
+<br>
+<div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Compte créé !</strong> Vous pouvez à présent vous connecter</div>
+<h1>Connectez vous</h1>
+<?php
 
-echo 'Compte créé';
+include("connexion.php");
+?><br><?php
+
 }
 
 }

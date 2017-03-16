@@ -8,11 +8,9 @@ border-style:solid;
 box-shadow: 0px 0px 0px grey;
 background-color: white;
 padding: 0px 20px 0px 20px ;
-max-width: 1008px
 }
 
 .containerflux {
-max-width: 1000px;
 border-width:1px;
 border-color: #e0e0e0;
 border-radius: 5px;
@@ -97,4 +95,18 @@ a {
 
 .btnflux {
 	border : 0px;
+}
+
+.listeproches {
+	font-size: 18px;
+}
+
+.btn-pink {
+	background-color: #F7786B;
+	color: white;
+	border-color: #F7786B;
+}
+
+.pinkg {
+	color:#F7786B;
 }
