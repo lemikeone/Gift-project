@@ -69,7 +69,23 @@ $nextbirthday = get_next_birthday($donnees['datedenaissance']);
 $duree = floor((strtotime($nextbirthday) - time()));
 
 ?>
+
+<div class="row">
+<div class="col-md-9 .col-xs-12">
 <h1><?php echo htmlspecialchars($donnees['prenom']); ?> <?php echo htmlspecialchars($donnees['nom']); ?></h1>
+</div>
+<div class="col-md-3 menuprochesnotifs .col-xs-12">
+<?php if ($donnees['notifmail'] == 0) {
+?>
+<a href="notificationmail.php?idproche=<?php echo $donnees['ID']; ?>&notifmail=1"><p><i class="fa fa-bell" aria-hidden="true"></i> Notifications activées</p></a>
+<?php } ?>
+<?php if ($donnees['notifmail'] == 1) {
+?>
+<a href="notificationmail.php?idproche=<?php echo $donnees['ID']; ?>&notifmail=0"><p><i class="fa fa-bell-slash" aria-hidden="true"></i></i> Notifications désactivées</p></a>
+<?php } ?>
+<a href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>"><i class="fa fa-pencil" aria-hidden="true"></i> Modifier le contact</i></a>
+</div>
+</div>
 Date de naissance : 
 
 <?php 
@@ -98,7 +114,6 @@ Lien : <?php echo htmlspecialchars($donnees['link']) ?>
         <?php echo '<p ><i class="fa fa-clock-o" aria-hidden="true"></i>
  Dans ', floor((strtotime($nextbirthday) - time())/86400)+1; echo " jours</p>"; }
  ?> 
- <a class="btn btn-default btn-xs" href="modification-proche.php?idproche=<?php echo $donnees['ID'] ?>">Modifier le contact</i></a>
 <h2>Ajouter une idée cadeau</h2>
 
 <form method="POST" action="ajout-cadeau.php">

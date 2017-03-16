@@ -86,7 +86,13 @@ font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
 
 .margin20
 {padding-top: 20px;
-text-align: right;}
+text-align: right !important; 
+}
+
+.menuprochesnotifs
+{padding-top: 20px;
+	padding-bottom: 20px;
+}
 
 a {
     color: #262F36;

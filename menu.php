@@ -61,6 +61,7 @@ if (isset($_SESSION['id']) AND isset($_SESSION['email']))
           <ul class="dropdown-menu">
             <li><a href="form-ajout-proche.php">Ajouter un proche</a></li>
     <li><a href="ajoutideecadeau.php">Ajouter une idée cadeau</a></li>
+    <li><a href="profil.php">Ajouter une envie</a></li>
           </ul>
         </li>
       </ul>
