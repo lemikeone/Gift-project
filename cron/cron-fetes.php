@@ -26,7 +26,7 @@ $saintvalentin = date("Y", time())."-02-14";
 
 //Fete des mères
                 // Fete des meres jour J
-                if (date('Y-m-d', time()) == $feteDesMeres) {
+                if (date('Y-m-d', time()) == $feteDesMeres AND $donnees['notiffetedesmeres'] == 0) {
                 $pwrurl = "https://giftendly.com/liste-proches.php";
                 
                 // Envoyer email d'anniversaire
@@ -39,11 +39,11 @@ $saintvalentin = date("Y", time())."-02-14";
                 }
 
                 // Fete des meres J-5
-                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-5 days", strtotime($feteDesMeres)))) {
+                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-5 days", strtotime($feteDesMeres))) AND $donnees['notiffetedesmeres'] == 0) {
                 $pwrurl = "https://giftendly.com/liste-proches.php";
                 
                 // Envoyer email
-                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la fête des mères dans 5 jours.\n\nConsultez vos idées cadeaux sur sa fiche si vous l'avez déjà créée : ".$pwrurl."\n\nGiftendly";
+                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la fête des mères dans 5 jours.\n\nConsultez vos idées cadeaux sur sa fiche si vous l'avez déjà créée : ".$pwrurl."\n\nGiftendly\n\nPs : Vous pouvez activer ou desactiver les notifications mail à tout moment sur https://giftendly.com/profil.php";
 
 
                 $headers = 'From: Giftendly <noreply@giftendly.com>';
@@ -54,11 +54,11 @@ $saintvalentin = date("Y", time())."-02-14";
 // Fete des pères
 
                 // Fete des pères jour J
-                if (date('Y-m-d', time()) == $feteDesPeres) {
+                if (date('Y-m-d', time()) == $feteDesPeres AND $donnees['notiffetedesperes'] == 0) {
                 $pwrurl = "https://giftendly.com/liste-proches.php";
                 
                 // Envoyer email d'anniversaire
-                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la fête des pères aujourd'hui.\n\nGiftendly";
+                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la fête des pères aujourd'hui.\n\nGiftendly\n\nPs : Vous pouvez activer ou desactiver les notifications mail à tout moment sur https://giftendly.com/profil.php";
 
 
                 $headers = 'From: Giftendly <noreply@giftendly.com>';
@@ -68,11 +68,11 @@ $saintvalentin = date("Y", time())."-02-14";
                 }
 
                 // Fete des pères J-5
-                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-5 days", strtotime($feteDesPeres)))) {
+                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-5 days", strtotime($feteDesPeres))) AND $donnees['notiffetedesperes'] == 0) {
                 $pwrurl = "https://giftendly.com/liste-proches.php";
                 
                 // Envoyer email
-                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la fête des pères dans 5 jours.\n\nConsultez vos idées cadeaux sur sa fiche si vous l'avez déjà créée : ".$pwrurl."\n\nGiftendly";
+                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la fête des pères dans 5 jours.\n\nConsultez vos idées cadeaux sur sa fiche si vous l'avez déjà créée : ".$pwrurl."\n\nGiftendly\n\nPs : Vous pouvez activer ou desactiver les notifications mail à tout moment sur https://giftendly.com/profil.php";
 
 
                 $headers = 'From: Giftendly <noreply@giftendly.com>';
@@ -84,11 +84,11 @@ $saintvalentin = date("Y", time())."-02-14";
 // Fête des grands mères
 
                 // Fete des grands mères jour J
-                if (date('Y-m-d', time()) == $FeteDesGrandsMeres) {
+                if (date('Y-m-d', time()) == $FeteDesGrandsMeres AND $donnees['notiffetedesgrandsmeres'] == 0) {
                 $pwrurl = "https://giftendly.com/liste-proches.php";
                 
                 // Envoyer email d'anniversaire
-                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la fête des grands-mères aujourd'hui.\n\nGiftendly";
+                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la fête des grands-mères aujourd'hui.\n\nGiftendly\n\nPs : Vous pouvez activer ou desactiver les notifications mail à tout moment sur https://giftendly.com/profil.php";
 
 
                 $headers = 'From: Giftendly <noreply@giftendly.com>';
@@ -97,11 +97,11 @@ $saintvalentin = date("Y", time())."-02-14";
                 }
 
                 // Fete des grands mères J-5
-                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-5 days", strtotime($FeteDesGrandsMeres)))) {
+                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-5 days", strtotime($FeteDesGrandsMeres))) AND $donnees['notiffetedesgrandsmeres'] == 0) {
                 $pwrurl = "https://giftendly.com/liste-proches.php";
                 
                 // Envoyer email
-                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la fête des grands-mères dans 5 jours.\n\nConsultez vos idées cadeaux sur sa fiche si vous l'avez déjà créée : ".$pwrurl."\n\nGiftendly";
+                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la fête des grands-mères dans 5 jours.\n\nConsultez vos idées cadeaux sur sa fiche si vous l'avez déjà créée : ".$pwrurl."\n\nGiftendly\n\nPs : Vous pouvez activer ou desactiver les notifications mail à tout moment sur https://giftendly.com/profil.php";
 
 
                 $headers = 'From: Giftendly <noreply@giftendly.com>';
@@ -113,11 +113,11 @@ $saintvalentin = date("Y", time())."-02-14";
 // Noël    
 
                 // Fete des Noël jour J
-                if (date('Y-m-d', time()) == $noel) {
+                if (date('Y-m-d', time()) == $noel AND $donnees['notifnoel'] == 0) {
                 $pwrurl = "https://giftendly.com/liste-proches.php";
                 
                 // Envoyer email d'anniversaire
-                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est Noël aujourd'hui.\n\nPassez un joyeux Noël avec Giftendly.\n\nGiftendly";
+                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est Noël aujourd'hui.\n\nPassez un joyeux Noël avec Giftendly.\n\nGiftendly\n\nPs : Vous pouvez activer ou desactiver les notifications mail à tout moment sur https://giftendly.com/profil.php";
 
 
                 $headers = 'From: Giftendly <noreply@giftendly.com>';
@@ -126,11 +126,11 @@ $saintvalentin = date("Y", time())."-02-14";
                 }
 
                 // Fete des Noël J-15
-                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-15 days", strtotime($noel)))) {
+                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-15 days", strtotime($noel))) AND $donnees['notifnoel'] == 0) {
                 $pwrurl = "https://giftendly.com/liste-proches.php";
                 
                 // Envoyer email d'anniversaire
-                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est Noël dans 15 jours.\n\nAvez vous bien commandé tous vos cadeaux ?\n\nConsultez vos idées cadeaux sur les fiches de vos proches : ".$pwrurl."\n\nGiftendly";
+                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est Noël dans 15 jours.\n\nAvez vous bien commandé tous vos cadeaux ?\n\nConsultez vos idées cadeaux sur les fiches de vos proches : ".$pwrurl."\n\nGiftendly\n\nPs : Vous pouvez activer ou desactiver les notifications mail à tout moment sur https://giftendly.com/profil.php";
 
 
                 $headers = 'From: Giftendly <noreply@giftendly.com>';
@@ -139,11 +139,11 @@ $saintvalentin = date("Y", time())."-02-14";
                 }
 
                 // Fete des Noël J-30
-                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-30 days", strtotime($noel)))) {
+                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-30 days", strtotime($noel))) AND $donnees['notifnoel'] == 0) {
                 $pwrurl = "https://giftendly.com/liste-proches.php";
                 
                 // Envoyer email d'anniversaire
-                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est Noël dans 30 jours.\n\nCommencez à créer des listes d'idées cadeaux sur les fiches de vos proches : ".$pwrurl."\n\nGiftendly";
+                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est Noël dans 30 jours.\n\nCommencez à créer des listes d'idées cadeaux sur les fiches de vos proches : ".$pwrurl."\n\nGiftendly\n\nPs : Vous pouvez activer ou desactiver les notifications mail à tout moment sur https://giftendly.com/profil.php";
 
 
                 $headers = 'From: Giftendly <noreply@giftendly.com>';
@@ -158,7 +158,7 @@ $saintvalentin = date("Y", time())."-02-14";
                 $pwrurl = "https://giftendly.com/liste-proches.php";
                 
                 // Envoyer email
-                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la Saint-Valentin aujourd'hui.\n\nNous vous souhaitons de passer un moment romantique !\n\nGiftendly";
+                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la Saint-Valentin aujourd'hui.\n\nNous vous souhaitons de passer un moment romantique !\n\nGiftendly\n\nPs : Vous pouvez activer ou desactiver les notifications mail à tout moment sur https://giftendly.com/profil.php";
 
 
                 $headers = 'From: Giftendly <noreply@giftendly.com>';
@@ -167,11 +167,11 @@ $saintvalentin = date("Y", time())."-02-14";
                 }
 
                 // Fete des Saint Valentin   J-7
-                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-7 days", strtotime($saintvalentin)))) {
+                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-7 days", strtotime($saintvalentin))) AND $donnees['notifsaintvalentin'] == 0) {
                 $pwrurl = "https://giftendly.com/liste-proches.php";
                 
                 // Envoyer email
-                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la Saint Valentin dans 7 jours.\n\nAvez vous bien résérvé ou commandé ce que vous avez prévu ?\n\nConsultez vos idées la fiche de votre proche : ".$pwrurl."\n\nGiftendly";
+                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la Saint Valentin dans 7 jours.\n\nAvez vous bien résérvé ou commandé ce que vous avez prévu ?\n\nConsultez vos idées la fiche de votre proche : ".$pwrurl."\n\nGiftendly\n\nPs : Vous pouvez activer ou desactiver les notifications mail à tout moment sur https://giftendly.com/profil.php";
 
 
                 $headers = 'From: Giftendly <noreply@giftendly.com>';
@@ -180,11 +180,11 @@ $saintvalentin = date("Y", time())."-02-14";
                 }
 
                 // Fete des Saint Valentin   J-15
-                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-15 days", strtotime($noel)))) {
+                if (date('Y-m-d', time()) == date("Y-m-d", strtotime("-15 days", strtotime($saintvalentin))) AND $donnees['notifsaintvalentin'] == 0) {
                 $pwrurl = "https://giftendly.com/liste-proches.php";
                 
                 // Envoyer email d'anniversaire
-                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la Saint-Valentin dans 15 jours.\n\nCommencez à créer des listes d'idées sur la fiche de votre proches : ".$pwrurl."\n\nGiftendly";
+                $mailbody = "Bonjour ".$donnees['pseudo'].",\n\nC'est la Saint-Valentin dans 15 jours.\n\nCommencez à créer des listes d'idées sur la fiche de votre proches : ".$pwrurl."\n\nGiftendly\n\nPs : Vous pouvez activer ou desactiver les notifications mail à tout moment sur https://giftendly.com/profil.php";
 
 
                 $headers = 'From: Giftendly <noreply@giftendly.com>';

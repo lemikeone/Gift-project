@@ -34,7 +34,7 @@ if (isset($_SESSION['id']) AND isset($_SESSION['email']))
 			<li><a href="index.php">Evenements à venir</a></li>
 			<li><a href="liste-proches.php">Mes proches</a></li>
 			<li><a href="ideescadeaux.php">Idées cadeaux</a></li>
-			<li><a href="profil.php">Mes envies</a></li>
+			<li><a href="mes-envies.php">Mes envies</a></li>
 			<li><a href="logoutpage.php">Se déconnecter</a></li>
 		<?php }
 

@@ -7,19 +7,6 @@
 </head>
 <body>
 
-<script>
-  (function(w, d){
-   var id='embedly-platform', n = 'script';
-   if (!d.getElementById(id)){
-     w.embedly = w.embedly || function() {(w.embedly.q = w.embedly.q || []).push(arguments);};
-     var e = d.createElement(n); e.id = id; e.async=1;
-     e.src = ('https:' === document.location.protocol ? 'https' : 'http') + '://cdn.embedly.com/widgets/platform.js';
-     var s = d.getElementsByTagName(n)[0];
-     s.parentNode.insertBefore(e, s);
-   }
-  })(window, document);
-</script>
-
 <?php 
 include("menu.php");
 include("header.php"); 
@@ -61,113 +48,67 @@ $reponse = $bdd->prepare('SELECT * FROM users WHERE id = ?');
 $reponse->execute(array($userid));
 $donnees = $reponse->fetch();
 
-echo '<h1>'.$donnees['pseudo'].'</h1>';
+echo '<h1>'.$donnees['pseudo'].'</h1><h3>Activer / desactiver les notifications pour :</h3>';
 
-// Envies
-
+if ($donnees['notifanniversaire'] == 0) {
 ?>
-
-<h2>Ajoutez vos envies</h2>
-
-<form method="POST" action="ajoutenvie.php">
-<div class="row">
-<div class="form-group col-md-9">
-<div class="input-group"> 
-<div class="input-group-addon">www</div>
-<input class="form-control" type="text" name="url" placeholder="Entrez l'URL de la page du cadeau...">
-</div>
-</div>
-<input type="hidden" name="userid" value="<?php echo "$userid"; ?>">
-<div class="form-group col-md-3">
-<button class="btn btn-default btn-block" type="submit">Ajouter</button>
-</div>
-</div>
-</form>
-<br>
-
-<?php
-$reponse = $bdd->prepare('SELECT * FROM usersgifts WHERE userid = ? ORDER BY ID DESC');
-$reponse->execute(array($userid));
+<a href="notificationsprofil.php?notifanniversaire=1" class="btn btn-default"><i class="fa fa-bell" aria-hidden="true"></i> Anniversaires</a>
+<?php } ?>
+<?php if ($donnees['notifanniversaire'] == 1) {
 ?>
+<a href="notificationsprofil.php?notifanniversaire=0" class="btn btn-default"><i class="fa fa-bell-slash" aria-hidden="true"></i></i> Anniversaires</a>
+<?php }
 
-<div class="row flex">
-<?php
-while ($donnees = $reponse->fetch())
-    {
-  ?>
-  <div class="col-md-4 col-xs-12">
-<a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw pinkg"></i></center></i></a>
-
-<div class="row">
-<!-- Button trigger modal -->
-<div class="col-md-6">
-<div class="text-center">
-<button type="button" class="btn btn-default btn-xs btn-block" data-toggle="modal" data-target="#<?php echo $donnees['ID']; ?>">
- <i class="fa fa-bookmark" aria-hidden="true"></i> Ajouter à une liste
-</button>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="<?php echo $donnees['ID']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Ajouter le cadeau dans la liste d'un proche</h4>
-      </div>
-      <div class="modal-body">
-<!-- Formulaire d'ajout -->
-
-<form method="POST" action="ajout-cadeau.php">
-
-<div class="row">
-
-<div class="form-group col-md-9">
-<?php include("menu-proches.php"); ?>
-</div>
-<input type="hidden" name="url" value="<?php echo $donnees['url']; ?>">
-<div class="form-group col-md-3">
-<button class="btn btn-default btn-block" type="submit">Ajouter</button>
-</div>
-</div>
-</form>
-<!-- Fin du formulaire d'ajout -->
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Fin modal -->
-</center>
-</div>
-
-
-<div class="col-md-6">
-<center><a href="suppressioncadeau.php?idgift=<?php echo $donnees['ID']; ?>" class="btn btn-default btn-xs btn-block"><i class="fa fa-times" aria-hidden="true"></i> Supprimer</a>
-</div>
-
-</div> 
-
-
-</div>
-<?php
-
-        }
+if ($donnees['notifsaintvalentin'] == 0) {
 ?>
-</div>
-<br><br>
-<?php
+<a href="notificationsprofil.php?notifsaintvalentin=1" class="btn btn-default"><i class="fa fa-bell" aria-hidden="true"></i> Saint Valentin</a>
+<?php } ?>
+<?php if ($donnees['notifsaintvalentin'] == 1) {
+?>
+<a href="notificationsprofil.php?notifsaintvalentin=0" class="btn btn-default"><i class="fa fa-bell-slash" aria-hidden="true"></i></i> Saint Valentin</a>
+<?php }
 
+if ($donnees['notiffetedesmeres'] == 0) {
+?>
+<a href="notificationsprofil.php?notiffetedesmeres=1" class="btn btn-default"><i class="fa fa-bell" aria-hidden="true"></i> Fête des mères</a>
+<?php } ?>
+<?php if ($donnees['notiffetedesmeres'] == 1) {
+?>
+<a href="notificationsprofil.php?notiffetedesmeres=0" class="btn btn-default"><i class="fa fa-bell-slash" aria-hidden="true"></i></i> Fête des mères</a>
+<?php }
 
-// Fin des envies
+if ($donnees['notiffetedesperes'] == 0) {
+?>
+<a href="notificationsprofil.php?notiffetedesperes=1" class="btn btn-default"><i class="fa fa-bell" aria-hidden="true"></i> Fête des pères</a>
+<?php } ?>
+<?php if ($donnees['notiffetedesperes'] == 1) {
+?>
+<a href="notificationsprofil.php?notiffetedesperes=0" class="btn btn-default"><i class="fa fa-bell-slash" aria-hidden="true"></i></i> Fête des pères</a>
+<?php }
 
-$salt = "89747D*!L7#JKHZ78698!*";
-$token = hash('sha1', $salt.$userid);
+if ($donnees['notiffetedesgrandsmeres'] == 0) {
+?>
+<a href="notificationsprofil.php?notiffetedesgrandsmeres=1" class="btn btn-default"><i class="fa fa-bell" aria-hidden="true"></i> Fête des grands-mères</a>
+<?php } ?>
+<?php if ($donnees['notiffetedesgrandsmeres'] == 1) {
+?>
+<a href="notificationsprofil.php?notiffetedesgrandsmeres=0" class="btn btn-default"><i class="fa fa-bell-slash" aria-hidden="true"></i></i> Fête des grands-mères</a>
+<?php }
 
-echo "<h3>Partagez votre liste d'envies : </h3><br>"; echo "<pre>https://giftendly.com/profilpublic.php?userid=".$userid."&token=".$token."</pre><p>Seules les personnes à qui vous donnerez cette URL auront accès à votre liste d'envies.</p>"; 
+if ($donnees['notifnoel'] == 0) {
+?>
+<a href="notificationsprofil.php?notifnoel=1" class="btn btn-default"><i class="fa fa-bell" aria-hidden="true"></i> Noël</a>
+<?php } ?>
+<?php if ($donnees['notifnoel'] == 1) {
+?>
+<a href="notificationsprofil.php?notifnoel=0" class="btn btn-default"><i class="fa fa-bell-slash" aria-hidden="true"></i></i> Noël</a>
+<?php }
+
 
 }
 
 ?>
-<br>
+<br><br>
 
 <?php include("footer.php"); ?>
 
