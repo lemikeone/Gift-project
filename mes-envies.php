@@ -80,7 +80,7 @@ $donnees = $reponse->fetch();
 <button class="btn btn-default btn-block" type="submit">Ajouter</button>
 </div>
 </div>
-</form>
+
 <br>
 
 <?php
@@ -152,6 +152,7 @@ while ($donnees = $reponse->fetch())
 ?>
 </div>
 <br><br>
+</form>
 <?php
 
 
@@ -164,8 +165,7 @@ echo "<h3>Partagez votre liste d'envies : </h3><br>"; echo "<pre>https://giftend
 
 }
 
-?>
-<br>
+?><br>
 
 <?php include("footer.php"); ?>
 

@@ -79,7 +79,7 @@ while ($donnees = $reponse->fetch())
 <div class="row">
 <div class="col-md-6">
 <div class="text-center">
-<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#<?php echo $donnees['ID']; ?>">
+<button type="button" class="btn btn-default btn-xs btn-block" data-toggle="modal" data-target="#<?php echo $donnees['ID']; ?>">
  <i class="fa fa-bookmark" aria-hidden="true"></i> Ajouter à une liste
 </button>
 </div>
@@ -119,7 +119,7 @@ while ($donnees = $reponse->fetch())
 <form method="POST" action="ajoutenvie.php">
 <input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
 <input type="hidden" name="url" value="<?php echo $donnees['url']; ?>">
-<button class="btn btn-default btn-xs" type="submit" ><i class="fa fa-heart" aria-hidden="true"></i> Ajouter à mes envies</button>
+<button class="btn btn-default btn-xs btn-block" type="submit" ><i class="fa fa-heart" aria-hidden="true"></i> Ajouter à mes envies</button>
 </form>
 </div>
 </div>
