@@ -41,6 +41,13 @@ $bdd = new PDO("mysql:host={$host};dbname={$dbname};charset=utf8", $username, $p
 
 ?>
 <h1>Idées cadeaux</h1>
+<?php if (isset($_GET['ajout']) AND $_GET['ajout'] == "true")
+{
+?>
+<div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> <strong>Une bonne chose de faite !</strong> Le produit à été ajouté</div>
+<?php
+}
+ ?>
 <p>Retrouvez les dernières idées cadeaux proposées par les membres :</p>
 <br/>
 
@@ -69,6 +76,8 @@ while ($donnees = $reponse->fetch())
 <a href="<?php echo $donnees['url']; ?>" class="embedly-card"><center><i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw pinkg"></i></center></i></a>
 
  <!-- Button trigger modal -->
+<div class="row">
+<div class="col-md-6">
 <div class="text-center">
 <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#<?php echo $donnees['ID']; ?>">
  <i class="fa fa-bookmark" aria-hidden="true"></i> Ajouter à une liste
@@ -104,6 +113,16 @@ while ($donnees = $reponse->fetch())
   </div>
 </div>
 <!-- Fin modal -->
+</div>
+
+<div class="col-md-6">
+<form method="POST" action="ajoutenvie.php">
+<input type="hidden" name="userid" value="<?php echo $_SESSION['id']; ?>">
+<input type="hidden" name="url" value="<?php echo $donnees['url']; ?>">
+<button class="btn btn-default btn-xs" type="submit" ><i class="fa fa-heart" aria-hidden="true"></i> Ajouter à mes envies</button>
+</form>
+</div>
+</div>
 
 </div>
 

@@ -10,6 +10,15 @@ $idproche = $_POST['idproche'];
 
 if (!filter_var($url, FILTER_VALIDATE_URL) === false) {
     // Ecriture du proche
+
+// Securité
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE id = ?');
+$reponse->execute(array($idproche));
+$donnees = $reponse->fetch();
+
+if ($donnees['iduser'] == $_SESSION['id']) {
+	# code...
+
 $req = $bdd->prepare('INSERT INTO usersgifts(procheid, url) VALUES(:procheid, :url)');
 $req->execute(array(
 	'procheid' => $idproche,
@@ -18,6 +27,8 @@ $req->execute(array(
 
 header('Location: ' . $_SERVER['HTTP_REFERER']."?ajout=true");
 } 
+
+}
 
 else {
     echo("$url n'est pas une adresse web valide");
