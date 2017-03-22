@@ -152,7 +152,7 @@ $reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datede
         }
 
 // On sort les anniversaires avant la date en cours (donc de l'année suivante) et avant la Saint Valentin
-$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) = SUBSTR(CURDATE(),6) AND SUBSTR(`datedenaissance`,6) <= "02-14" ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
+$reponse = $bdd->prepare('SELECT * FROM usersfriends WHERE iduser = ? AND datedenaissance != 0000-00-00 AND SUBSTR(`datedenaissance`,6) <= SUBSTR(CURDATE(),6) AND SUBSTR(`datedenaissance`,6) <= "02-14" ORDER BY CONCAT(SUBSTR(`datedenaissance`,6) < SUBSTR(CURDATE(),6), SUBSTR(`datedenaissance`,6))');
       $reponse->execute(array($_SESSION['id']));
 
       // On affiche chaque entrée une à une

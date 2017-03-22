@@ -35,12 +35,20 @@ if (isset($_SESSION['id']) AND isset($_SESSION['email']))
 			<li><a href="liste-proches.php">Mes proches</a></li>
 			<li><a href="ideescadeaux.php">Idées cadeaux</a></li>
 			<li><a href="mes-envies.php">Mes envies</a></li>
-			<li><a href="logoutpage.php">Se déconnecter</a></li>
+			<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ajouter <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="form-ajout-proche.php">Ajouter un proche</a></li>
+    <li><a href="ajoutideecadeau.php">Ajouter une idée cadeau</a></li>
+    <li><a href="profil.php">Ajouter une envie</a></li>
+          </ul>
+        </li>
 		<?php }
 
 	else 
 		{
 			?>
+			</ul><ul class="nav navbar-nav navbar-right">
 			<li><a href="create-account.php">Créer un compte</a></li>
 			<li><a href="pageconnexion.php">Connexion</a></li>
 			<?php }?>
@@ -54,17 +62,8 @@ if (isset($_SESSION['id']) AND isset($_SESSION['email']))
 
 
 <ul class="nav navbar-nav navbar-right">
+<li><a href="logoutpage.php">Se déconnecter</a></li>
       <li><a href="profil.php">Profil <i class="fa fa-user-circle-o" aria-hidden="true"></i></a></li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ajouter <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="form-ajout-proche.php">Ajouter un proche</a></li>
-    <li><a href="ajoutideecadeau.php">Ajouter une idée cadeau</a></li>
-    <li><a href="profil.php">Ajouter une envie</a></li>
-          </ul>
-        </li>
       </ul>
 
 <?php } ?>
