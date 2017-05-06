@@ -33,7 +33,7 @@ if (isset($_SESSION['id']) AND isset($_SESSION['email']))
 			?>
 			<li><a href="index.php">Evenements à venir</a></li>
 			<li><a href="liste-proches.php">Mes proches</a></li>
-			<li><a href="ideescadeaux.php">Idées cadeaux</a></li>
+			<li><a href="ideescadeaux-popular.php">Idées cadeaux</a></li>
 			<li><a href="mes-envies.php">Mes envies</a></li>
 			<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ajouter <span class="caret"></span></a>
